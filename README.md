@@ -31,6 +31,10 @@ The problem stems from the fact that swimmnig is truly an incredible sport and n
 
 The reason swimming has reached the top 3 in the Olympics is thanks to technology. Swimming has come so far since more technologies were introduced in sports, to the point that it was able to compete with athletics and gymnastics. Technology has helped with more accurate measure to optimize performance and analyze techniques, which has made the sport more accessible and exciting for a wider audience thus increasing its popularity in the Olympics. 
 
+## 3. 
+
+## 4. 
+
 ## 5. Objectives
 
 We aim to create a wesite that brings all sorts of people together to learn about swimming, whether it be from an academic, historical, technological or athletic point of view. Here are our priorities in terms of building the website:
