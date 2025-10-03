@@ -14,12 +14,20 @@ namespace English_ZP3_Project.Controllers
             _logger = logger;
         }
 
-        public IActionResult Intro()
+        public IActionResult Index()
         {
-            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files","intro");
+            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files");
 
-            ViewBag.EnText = System.IO.File.ReadAllText(folderPath + "en.txt");
-            ViewBag.FrText = System.IO.File.ReadAllText(folderPath + "fr.txt");
+            // Read both files
+            string enFile = Path.Combine(folderPath, "introen.txt");
+            string frFile = Path.Combine(folderPath, "introfr.txt");
+
+            string enText = System.IO.File.Exists(enFile) ? System.IO.File.ReadAllText(enFile) : "English file not found.";
+            string frText = System.IO.File.Exists(frFile) ? System.IO.File.ReadAllText(frFile) : "French file not found.";
+
+            // Pass to ViewBag
+            ViewBag.EnText = enText;
+            ViewBag.FrText = frText;
 
             return View();
         }
