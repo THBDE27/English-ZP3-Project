@@ -7,29 +7,75 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/English_ZP3_Project.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <img src="~/images/pngtree-young-woman-swimmer-in-swimming-pool-photo-image_2817484.jpg" alt="Banner" class="top-banner">
+
+        <nav class="font-cookie navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="min-height: 100px;">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">English_ZP3_Project</a>
+                <a class="navbar-brand font-cookie" asp-area="" asp-controller="Home" asp-action="Index" style="font-size: 75px;">Swimming</a>
+                
+
+
+
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+
+
+
+
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between" id="navbarContent">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+
+                        <!-- Tech dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" id="techDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                                Tech
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="techDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">Technology</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">Techniques</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+                        <!-- health dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" id="healthDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" asp-area="" asp-controller="Home" asp-action="Privacy">
+                                Health
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="healthDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">Physical exam</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">Benefits</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">Workout plan</a></li>
+                            </ul>
                         </li>
+
+                        <!-- Social dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" id="socialDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                                Social
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="socialDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">Biographies</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">Events</a></li>
+                            </ul>
+                        </li>
+
+                       
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

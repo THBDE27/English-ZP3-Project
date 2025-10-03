@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Globalization;
 using English_ZP3_Project.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,19 @@ namespace English_ZP3_Project.Controllers
 
         public IActionResult Index()
         {
+            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files");
+
+            // Read both files
+            string enFile = Path.Combine(folderPath, "introen.txt");
+            string frFile = Path.Combine(folderPath, "introfr.txt");
+
+            string enText = System.IO.File.Exists(enFile) ? System.IO.File.ReadAllText(enFile) : "English file not found.";
+            string frText = System.IO.File.Exists(frFile) ? System.IO.File.ReadAllText(frFile) : "French file not found.";
+
+            // Pass to ViewBag
+            ViewBag.EnText = enText;
+            ViewBag.FrText = frText;
+
             return View();
         }
 
@@ -22,6 +36,8 @@ namespace English_ZP3_Project.Controllers
         {
             return View();
         }
+
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

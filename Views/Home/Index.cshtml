@@ -2,7 +2,23 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<br />
+<h1 class="display-4 text-center font-cookie">Introduction</h1>
+<br />
+<br />
+
+<div style="text-align:justify; display:flex; gap:20px;">
+
+    <div style="flex:1;">
+        <pre style="white-space: pre-wrap; font-family: Arial, sans-serif; font-size:16px;">
+@ViewBag.EnText
+        </pre>
+    </div>
+
+    <div style="flex:1;">
+        <pre style="white-space: pre-wrap; font-family: Arial, sans-serif; font-size:16px;">
+@ViewBag.FrText
+        </pre>
+    </div>
+
 </div>
