@@ -16,19 +16,18 @@ html {
     font-family: 'Cookie', cursive;
     font-size: 3rem;
 }
+
 .navbar .dropdown-toggle::after {
     display: none;
 }
 
-/* Dropdown background same as navbar */
 .navbar .dropdown-menu {
     background-color: cornflowerblue; 
     border: none; 
 }
 
-    /* Dropdown items text color */
     .navbar .dropdown-menu .dropdown-item {
-        color: black; /* white text */
+        color: black; 
     }
 
     .navbar .dropdown-menu .dropdown-item {
@@ -43,9 +42,21 @@ html {
     object-fit: cover; /* crop/scale image to fill container */
     display: block;
 }
+
+
+.title {
+    display: 4;
+    text-align: center;
+    font: cookie;
+    margin-top: 40px;
+    margin-bottom:40px;
+    font-family: 'Cookie', cursive;
+    font-size: 3rem;
+}
+
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 header{

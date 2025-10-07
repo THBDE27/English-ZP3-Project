@@ -22,8 +22,8 @@ namespace English_ZP3_Project.Controllers
             string enFile = Path.Combine(folderPath, "introen.txt");
             string frFile = Path.Combine(folderPath, "introfr.txt");
 
-            string enText = System.IO.File.Exists(enFile) ? System.IO.File.ReadAllText(enFile) : "English file not found.";
-            string frText = System.IO.File.Exists(frFile) ? System.IO.File.ReadAllText(frFile) : "French file not found.";
+            string enText = System.IO.File.ReadAllText(enFile);
+            string frText = System.IO.File.ReadAllText(frFile);
 
             // Pass to ViewBag
             ViewBag.EnText = enText;

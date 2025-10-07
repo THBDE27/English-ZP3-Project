@@ -1,7 +1,36 @@
-﻿
+﻿@model List<Technology>
 @{
     ViewData["Title"] = "Technology";
 }
 
-<h1>Technology</h1>
 
+
+<link rel="stylesheet" href="~/css/timeline.css" asp-append-version="true" />
+
+<h1 class="title">Technology</h1>
+
+
+<div class="box">
+
+    <div class="timeline">
+        <ul>
+
+
+            <li>
+                <div class="timeline-content">
+
+                    @foreach (Technology tech in Model)
+                    {
+                        <h1>
+                            @tech.Name
+                        </h1>
+
+                        <p>
+                            @tech.Info
+                        </p>
+                    }
+                   
+                </div>
+        </ul>
+    </div>
+</div>
