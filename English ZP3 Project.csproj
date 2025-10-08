@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\files\events\" />
     <Folder Include="wwwroot\files\technologies\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
