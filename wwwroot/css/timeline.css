@@ -1,15 +1,18 @@
 ﻿body {
 }
 
-
-*{
+/*for every section*/
+*
+{
     margin:0;
     padding:0;
     box-sizing: border-box;
 }
 
+/*seperates timeline area from h1*/
 .box{
-    margin-top:-100px;
+    margin-top:-20px;
+    margin-bottom:100px;
     min-height: 100vh;
     width:100%;
     display: flex;
@@ -17,19 +20,22 @@
     justify-content:center;
 }
 
+/*seperates tech from center line*/
 .timeline{
     width:80%;
     height:auto;
     max-width:800px;
     margin:0 auto;
     position:relative;
+    padding:50px 0;
 }
 
-/*BOXES*/
+/*removes bullet points*/
 .timeline ul{
-    list-style:none;
+    list-style:none; 
 }
 
+/*uniforms tech boxes*/
 .timeline ul li{
     padding: 10px;
     background-color:cornflowerblue;
@@ -38,37 +44,116 @@
     margin-bottom:20px;
 }
 
-.timeline ul li:last-child{
+/*no space under last tech box*/
+.timeline ul li:last-child
+{
     margin-bottom:0;
 }
 
-.timeline-content h1
-
+/*tech title*/
+.technology h2 
 {
-    font-size:25px;
-    font-weight:500;
-    line-height:30px;
-    margin-bottom:10px;
+    margin-top:10px;
+    font: cookie;
+    font-family: 'Cookie', cursive;
+    font-weight: 500;
+    line-height: 30px;
+    margin-bottom: 10px;
 }
 
-.timeline-content p{
+/*tech info*/
+.technology p
+{
     font-size:16px;
     line-height:30px;
     font-weight:300;
 }
 
+/*tech date*/
+.technology .date
+{
+    font-size:16px;
+    font-weight:300;
+    margin-bottom:10px;
+    letter-spacing:2px;
+}
+
+/*only when full laptop screen*/
 @media only screen and (min-width:768px){
+
+    /*position*/
+    .timeline{
+        position:relative;
+        padding:50px 0;
+    }
+
+    /* center line*/
+    .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+        width: 2px;
+        background-color: black;
+    }
+
+    /*make list truly centered*/    
+    .timeline ul{
+        list-style:none;
+        margin:0;
+        padding:0;
+    }
+
     .timeline ul li{
         width:50%;
         margin-bottom:50px;
         position:relative;
+        text-align:justify;
     }
 
-    .timeline ul li:nth-child(odd){
+    /*left boxes*/
+    .timeline ul li:nth-child(odd){ 
         float:left;
+        clear: right;
+        transform:translateX(-30px);
+        border-radius:20px 0px 20px 20px;
     }
 
-    .timeline ul li:nth-child(even){
+    /*right boxes*/
+    .timeline ul li:nth-child(even){ 
         float:right;
+        clear:left;
+        transform:translateX(30px);
+        border-radius:0px 20px 20px 20px;
+    }
+
+    /*bullets*/ 
+    .timeline ul li::after
+    {
+        content: "";
+        position: absolute;
+        height: 10px;
+        width: 10px;
+        background-color: black;
+        border-radius: 50%;
+        top: 0;
+    }
+
+    /*left bullets*/
+    .timeline ul li:nth-child(odd)::after{
+        transform:translate(50%,-50%);
+        right:-30px;
+    }
+
+    /*right bullets*/
+    .timeline ul li:nth-child(even)::after{
+        transform:translate(-50%,-50%);
+        left:-30px;
+    }
+
+    .technology .date{
+        position:absolute;
+        top:-30px;
     }
 }

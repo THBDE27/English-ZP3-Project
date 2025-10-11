@@ -1,0 +1,5 @@
+﻿Bill Parkinson, a Physics professor at the University of Michigan, invented the first touchpads using pressure sensors. 
+They were composed of a rubber pouch with sewn-in copper wires and insulated with silicone oil. 
+Its technology was rather simple; When the pouch was compressed, the wires were flexed and changed the electrical resistance of the circuit, which would immediately stop the clock. 
+Although his invention is now known to be revolutionary, it was once disfavoured by the swimming coaches, who doubted its safety and its accuracy. 
+Unfortunately, Parkinson’s sensors brought up concerns like electrocution and randomness due to splashes and waves.

@@ -4,22 +4,24 @@ namespace English_ZP3_Project.Models
 {
     public class Swimmer
     {
-        public Swimmer(string first, string last, int birthDay, int month, int year)
+        public Swimmer(string first, string last, int birthDay, int month, int year, string country)
         {
             FirstName = first;
             MiddleName = "";
             LastName = last;
             Birthday = SetBirthday(birthDay, month, year);
             Age = SetAge(birthDay, month, year);
+            Country = country;
         }
 
-        public Swimmer(string first, string middle, string last, int birthDay, int month, int year)
+        public Swimmer(string first, string middle, string last, int birthDay, int month, int year, string country)
         {
             FirstName = first;
             MiddleName = middle;
             LastName = last;
             Birthday = SetBirthday(birthDay, month, year);
             Age = SetAge(birthDay, month, year);
+            Country = country;
         }
 
         public string FirstName { get; }
@@ -63,7 +65,6 @@ namespace English_ZP3_Project.Models
 
             return date;
         }
-
         public int Age { get; }
         static int SetAge(int birthDate, int month, int year)
         {
@@ -79,6 +80,7 @@ namespace English_ZP3_Project.Models
             return age;
         }
 
+        public string Country { get; set; }
         public string Description
         {
             get

@@ -14,9 +14,13 @@ namespace English_ZP3_Project.Controllers
             _logger = logger;
         }
 
+        //NAOMIE
         public IActionResult Biographies()
         {
-            return View();
+            List<Swimmer> swimmers = new();
+            swimmers.Add(new Swimmer("Michael", "Phelps", 30, 6, 1985, "USA"));
+
+            return View(swimmers);
         }
 
         public IActionResult Events()

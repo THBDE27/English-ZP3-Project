@@ -3,9 +3,8 @@
     ViewData["Title"] = "Technology";
 }
 
-
-
 <link rel="stylesheet" href="~/css/timeline.css" asp-append-version="true" />
+
 
 <h1 class="title">Technology</h1>
 
@@ -14,23 +13,31 @@
 
     <div class="timeline">
         <ul>
+             @foreach (Technology tech in Model)
+             {
 
+                <li>
+                    <div class="technology">
 
-            <li>
-                <div class="timeline-content">
+                   
+                        <h3 class="date">
+                            @tech.Date
+                        </h3>
 
-                    @foreach (Technology tech in Model)
-                    {
-                        <h1>
+                        <h2>
                             @tech.Name
-                        </h1>
+                        </h2>
 
                         <p>
                             @tech.Info
                         </p>
-                    }
-                   
-                </div>
+
+
+                    </div>
+
+                </li>
+            }
+
         </ul>
     </div>
 </div>
