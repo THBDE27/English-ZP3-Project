@@ -1,92 +1,100 @@
 ﻿body {
 }
 
-/*for every section*/
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/*seperates timeline area from h1*/
-.box {
-    margin-top: -20px;
-    margin-bottom: 100px;
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/*seperates tech from center line*/
-.timeline {
-    width: 80%;
-    height: auto;
-    max-width: 800px;
-    margin: 0 auto;
+.container {
     position: relative;
-    padding: 50px 0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
 }
 
-    /*removes bullet points*/
-    .timeline ul {
-        list-style: none;
-    }
-
-        /*uniforms tech boxes*/
-        .timeline ul li 
-        {
-            padding: 10px;
-            background-color: #060606;
-            color: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-            /*no space under last tech box*/
-            .timeline ul li:last-child 
-            {
-                margin-bottom: 0;
-            }
-
-/*tech title*/
-.card h2 {
-    margin-top: 10px;
-    font: cookie;
-    font-family: 'Cookie', cursive;
-    font-weight: 500;
-    line-height: 30px;
-    margin-bottom: 10px;
+.card{
+    position:relative;
+    width:2em;
+    display:grid;
+    grid-template-columns:1fr;
+    grid-template-rows:180px 1fr auto;
+    box-shadow:0 15px 30px -10px #000;
+    cursor:pointer
 }
 
-/*tech info*/
-.card p {
-    font-size: 16px;
-    line-height: 30px;
-    font-weight: 300;
+card:hover{
+    box-shadow:4px 4px 25px rgba(0,0,0,0.2);
 }
 
-/*swimmer facts*/
-.card .facts {
-    font-size: 16px;
-    font-weight: 300;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
+.info .footer
+{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
-/*swimmer achievements*/
-.card .achievements {
-    font-size: 16px;
-    font-weight: 300;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
+.image{
+    position:relative;
+    background-color:black;
+    border-top-left-radius:18px;
+    border-top-right-radius:18px;
+    z-index:2;
+    display:flex;
+    justify-content:center;
 }
 
-/*swimmer body*/
-.card .body {
-    font-size: 16px;
-    font-weight: 300;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
+.info{
+    background-color:white;
+    padding:20px 28px;
 }
+
+.age {
+    font-weight:bolder;
+}
+
+.info h2{
+    font-size:1.8em;
+    margin:4px auto 12px;
+}
+
+
+.info p{
+    color:gray;
+    font-size:1.1em;
+    line-hieght:22px;
+    text-align:center;
+}
+
+.footer{
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom-left-radius:18px;
+    border-bottom-right-radius:18px;
+    background-color:black;
+    color:white;
+}
+
+.medal{
+    font-size:0.9em;
+    padding:10px;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    border-right:1px solid rgba(0,0,0,0.1);
+}
+
+.medal:last-child{
+    border:none;
+}
+
+.type{
+    text-transform: uppercase;
+    margin-top:2px;
+    font-size:0.8em;
+}
+

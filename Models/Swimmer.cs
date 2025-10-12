@@ -1,28 +1,57 @@
-﻿namespace English_ZP3_Project.Models
+﻿using System.CodeDom;
+using System.Drawing;
+
+namespace English_ZP3_Project.Models
 {
+   
     public class Swimmer
+
+      
     {
-        public Swimmer(string first, string last, int birthDay, int month, int year, string country, int gold, int silver, int bronze)
+
+        const int FACTS = 0;
+        const int BODY = 1;
+        const int ACHIEVEMENTS = 2;
+
+        public Swimmer(string first, string last, 
+                       int birthDay, int month, int year, 
+                       string country,
+                       int gold, int silver, int bronze)
         {
             FirstName = first;
             MiddleName = "";
             LastName = last;
+            Country = country;
+
+            Gold = gold;
+            Silver = silver;
+            Bronze = bronze;
+
             Birthday = SetBirthday(birthDay, month, year);
             Age = SetAge(birthDay, month, year);
-            Country = country;
         }
 
-        public Swimmer(string first, string middle, string last, int birthDay, int month, int year, string country, int gold, int silver, int bronze)
+        public Swimmer(string first, string middle, string last, 
+                       int birthDay, int month, int year, 
+                       string country,
+                       int gold, int silver, int bronze)
         {
             FirstName = first;
             MiddleName = middle;
             LastName = last;
+            Country = country;
+
+            Gold = gold;
+            Silver = silver;
+            Bronze = bronze;
+
             Birthday = SetBirthday(birthDay, month, year);
             Age = SetAge(birthDay, month, year);
-            Country = country;
         }
 
         #region Name
+
+
         public string FirstName { get; }
         public string MiddleName { get; }
         public string LastName { get; }
@@ -82,7 +111,10 @@
         }
         #endregion Birthday
 
-        public string Country { get; set; }
+        public string Country
+        {
+            get;set;
+        }
 
         #region Medals
         public int Gold { get; set; }
@@ -91,24 +123,49 @@
         #endregion Medals
 
         #region Text
-        public string Facts { get => FillPath("facts"); }
+        public string Facts { get => Information[FACTS]; }
 
-        public string Body { get => FillPath("body"); }
+        public string Body { get => Information[BODY]; }
 
-        public string Achievements { get => FillPath("achievements"); }
+        public string Achievements { get => Information[ACHIEVEMENTS]; }
 
-        public string FillPath(string section)
+        public string FilePath
         {
-            string file = Path.Combine(Directory.GetCurrentDirectory(),
-                                      "wwwroot",
-                                      "files",
-                                      "biographies",
-                                      section,
-                                      Initials +
-                                      Birthday +
-                                      ".txt");
-            return System.IO.File.ReadAllText(file);
+            get => GetPath("files", "txt");
         }
-        #endregion Text
+       
+
+        public string[] Information
+        {
+            get
+            {
+                string text = File.ReadAllText(FilePath);
+
+                return [.. text
+                .Split(new string[] { "\r\n\r\n", "\n\n" }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(p => p.Trim())];
+            }
+        }
+
+        public string Image
+        {
+            get => GetPath("images", "png");
+        }
+
+#endregion Text
+
+        // METHODS
+        string GetPath(string folder, string type)
+        {
+            return Path.Combine(Directory.GetCurrentDirectory(),
+                                          "wwwroot",
+                                          folder,
+                                          "biographies",
+                                          Initials +
+                                          Birthday +
+                                          "." +
+                                          type);
+        }
     }
+}
 
