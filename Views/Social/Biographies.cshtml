@@ -3,4 +3,73 @@
     ViewData["Title"] = "Biographies";
 }
 
-<h1>Biographies</h1>
+<link rel="stylesheet" href="~/css/card.css" asp-append-version="true" />
+
+<h1 class="title">Biographies</h1>
+
+
+
+<div class="container">
+
+    @foreach (Swimmer swimmer in Model)
+    {
+
+
+        <div class="card">
+
+
+            <div class="image">
+
+                <img src="" alt="Swimmer">
+
+            </div>
+
+            <div class="info">2
+                <h2>
+                    @swimmer.Name;
+                </h2>
+                <p>
+                    lorem ipsum wtv
+                </p>
+            </div>
+
+            <div class="footer">
+                <div class="medal">
+
+                    <div class="amount">
+                        @swimmer.Gold
+                    </div>
+
+                    <div class="material">
+                        Gold
+                    </div>
+
+                </div>
+
+                <div class="medal">
+
+                    <div class="amount">
+                        @swimmer.Silver
+                    </div>
+
+                    <div class="material">
+                        Silver
+                    </div>
+
+                </div>
+
+                <div class="medal">
+
+                    <div class="amount">
+                        @swimmer.Bronze
+                    </div>
+
+                    <div class="material">
+                        Bronze
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\files\biographies\facts\" />
+    <Folder Include="wwwroot\files\biographies\body\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

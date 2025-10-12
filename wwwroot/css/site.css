@@ -2,15 +2,13 @@ html {
   font-size: 14px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 775px) {
   html {
     font-size: 16px;
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
+
 
 .font-cookie {
     font-family: 'Cookie', cursive;
@@ -22,19 +20,20 @@ html {
 }
 
 .navbar .dropdown-menu {
-    background-color: cornflowerblue; 
+    background-color:#452FBA; 
     border: none; 
 }
 
-    .navbar .dropdown-menu .dropdown-item {
-        color: black; 
+.navbar .dropdown-menu .dropdown-item:hover {
+        background-color: #5B49BB;
+        color: white;
     }
 
-    .navbar .dropdown-menu .dropdown-item {
-        font-size: 36px; /* adjust as needed */
-        padding: 0.5rem 1rem; /* optional: bigger clickable area */
-        color: #000; /* text color */
-    }
+.navbar .dropdown-menu .dropdown-item {
+    font-size: 36px; /* adjust as needed */
+    padding: 0.5rem 1rem; /* optional: bigger clickable area */
+    color: white; /* text color */
+}
 
 .top-banner {
     width: 100%; /* full width */
@@ -42,7 +41,6 @@ html {
     object-fit: cover; /* crop/scale image to fill container */
     display: block;
 }
-
 
 .title {
     display: 4;
@@ -59,11 +57,12 @@ html {
     min-height: 100%;
 }
 
-header{
-    background-color : cornflowerblue;
+header {
+    background-color: #452FBA;
+    color: white;
 }
 
 body {
   margin-bottom: 60px;
-  background-color:azure;
+  background-color:white;
 }
