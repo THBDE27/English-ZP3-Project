@@ -5,8 +5,6 @@ namespace English_ZP3_Project.Models
 {
    
     public class Swimmer
-
-      
     {
 
         const int FACTS = 0;
@@ -69,7 +67,20 @@ namespace English_ZP3_Project.Models
                 }
             }
         }
-        public string Initials { get => FirstName[0] + "" + MiddleName[0] + "" + LastName[0]; }
+        public string Initials
+        {
+            get
+            {
+                if (MiddleName == "")
+                {
+                    return FirstName[0] + "" + LastName[0];
+                }
+                else
+                {
+                    return FirstName[0] + "" + MiddleName[0] + "" + LastName[0];
+                }
+            }
+        }
         #endregion Name
 
         #region Birthday

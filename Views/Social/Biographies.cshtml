@@ -2,37 +2,37 @@
 @{
     ViewData["Title"] = "Biographies";
 }
+<link rel="stylesheet" href="~/css/bio.css" asp-append-version="true" />
 
-<link rel="stylesheet" href="~/css/card.css" asp-append-version="true" />
 
 <h1 class="title">Biographies</h1>
 
 
 
-<div class="container">
+<div class="bio-container">
 
     @foreach (Swimmer swimmer in Model)
     {
 
 
-        <div class="card">
+        <div class="swimmer">
 
 
             <div class="image" style="background-image: url(@swimmer.Image);"> </div>
 
-            <div class="info">
+            <div class="swimmer-info"> 
                 <span class="age">
                     @swimmer.Age years old
                 </span>
                 <h2>
-                    @swimmer.Name;
+                    @swimmer.Name
                 </h2>
                 <p>
-                    lorem ipsum wtv
+                    lorem ipsum wtvugyukgtifi cyifbg bfjvj tfvjhytdic tiyfvyivg  fctrfeujfv cyfcjcjg curdjctb  
                 </p>
             </div>
 
-            <div class="footer">
+            <div class="swimmer-footer">
                 <div class="medal">
 
                     <div class="amount">

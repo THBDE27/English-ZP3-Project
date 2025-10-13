@@ -1,0 +1,91 @@
+﻿
+
+.bio-container {
+    font-size: 14px;
+    min-height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius:18px;
+}
+
+.swimmer {
+    border-radius: 18px;
+    position: relative;
+    width: 270px;
+    margin: 2em;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 180px 1fr auto;
+    box-shadow: 0 10px 30px 10px rgba(104, 83, 243, 0.2);
+    cursor:pointer;
+}
+
+    .swimmer .image {
+        position: relative;
+        background-color: black;
+        border-top-left-radius: 18px;
+        border-top-right-radius: 18px;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swimmer:hover {
+        box-shadow: 0 10px 30px 10px rgba(104, 83, 255, 0.51);
+    }
+
+    .swimmer .swimmer-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        padding: 20px 28px;
+    }
+
+        .swimmer .swimmer-info .age {
+            font-weight: bolder;
+        }
+
+        .swimmer .swimmer-info h2 {
+            font-size: 1.8em;
+            margin: 4px auto 12px;
+        }
+
+        .swimmer .swimmer-info p {
+            color: gray;
+            font-size: 1.1em;
+            line-height: 22px;
+            text-align: center;
+        }
+
+    .swimmer .swimmer-footer {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 100%;
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+        background-color: black;
+        color: white;
+    }
+
+        .swimmer .swimmer-footer .medal {
+            text-align: center;
+            padding: 10px;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+
+            .swimmer .swimmer-footer .medal:last-child {
+                border-right: none;
+            }
+
+            .swimmer .swimmer-footer .medal .material {
+                text-transform: uppercase !important;
+                margin-top: 2px;
+                font-size: 0.8em;
+            }
