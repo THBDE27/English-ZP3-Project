@@ -8,8 +8,9 @@ namespace English_ZP3_Project.Models
     {
 
         const int FACTS = 0;
-        const int BODY = 1;
-        const int ACHIEVEMENTS = 2;
+        const int ACHIEVEMENTS = 1;
+        const int SPECIALIZATION = 2;
+        const int BIOLOGY = 3;
 
         public Swimmer(string first, string last, 
                        int birthDay, int month, int year, 
@@ -29,6 +30,7 @@ namespace English_ZP3_Project.Models
 
             Birthday = SetBirthday(birthDay, month, year);
             Age = SetAge(birthDay, month, year);
+            Passed = died;
         }
 
         public Swimmer(string first, string middle, string last, 
@@ -49,6 +51,7 @@ namespace English_ZP3_Project.Models
 
             Birthday = SetBirthday(birthDay, month, year);
             Age = SetAge(birthDay, month, year);
+            Passed = died;
         }
         
         
@@ -147,9 +150,11 @@ namespace English_ZP3_Project.Models
         #region Text
         public string Facts { get => Information[FACTS]; }
 
-        public string Body { get => Information[BODY]; }
+        public string Biology { get => Information[BIOLOGY]; }
 
         public string Achievements { get => Information[ACHIEVEMENTS]; }
+
+        public string Special { get => Information[SPECIALIZATION]; }
 
         public string FilePath
         {
