@@ -109,7 +109,7 @@
     opacity:1;
 }
 
-.read-more button {
+.read-more a {
     background-color: #452FBA;
     color:white;
     outline:none;
@@ -124,11 +124,11 @@
     transition:opacity 0.3s;
 }
 
-.read-more button:hover{
+.read-more:hover{
     opacity:0.8;
 }
 
-.read-more button a {
+.read-more a {
     color:white;
     text-decoration:none;
 }

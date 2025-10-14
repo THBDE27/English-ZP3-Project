@@ -179,6 +179,8 @@ namespace English_ZP3_Project.Models
             get => GetPath("images", "png");
         }
 
+        public string ID { get => Initials + Birthday + ""; }
+
 #endregion Text
 
         // METHODS
@@ -188,8 +190,7 @@ namespace English_ZP3_Project.Models
                                           "wwwroot",
                                           folder,
                                           "biographies",
-                                          Initials +
-                                          Birthday +
+                                          ID +
                                           "." +
                                           type);
         }

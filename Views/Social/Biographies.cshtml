@@ -84,20 +84,15 @@
                 </div>
             </div>
 
-            <div class="read-more" asp-area=""
-                 asp-controller="Tech"
-                 asp-action="Technology">
-                
-                <button>
-                   
-                        <a asp-area=""
-                           asp-controller="Social"
-                           asp-action="Biographies">
-                        Read more
-                        </a>
+            <div class="read-more">
+            
+                <a asp-area=""
+                    asp-controller="Social"
+                    asp-action="Biography"
+                    asp-route-id="@swimmer.ID">
+                Read more
+                </a>
 
-                    
-                </button>
             </div>
         </div>
     
