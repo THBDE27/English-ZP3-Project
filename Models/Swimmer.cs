@@ -13,13 +13,15 @@ namespace English_ZP3_Project.Models
 
         public Swimmer(string first, string last, 
                        int birthDay, int month, int year, 
-                       string country,
-                       int gold, int silver, int bronze)
+                       string country, string bestSwim,
+                       int gold, int silver, int bronze,
+                       bool died)
         {
             FirstName = first;
             MiddleName = "";
             LastName = last;
             Country = country;
+            Best = bestSwim;
 
             Gold = gold;
             Silver = silver;
@@ -31,13 +33,15 @@ namespace English_ZP3_Project.Models
 
         public Swimmer(string first, string middle, string last, 
                        int birthDay, int month, int year, 
-                       string country,
-                       int gold, int silver, int bronze)
+                       string country, string bestSwim,
+                       int gold, int silver, int bronze,
+                       bool died)
         {
             FirstName = first;
             MiddleName = middle;
             LastName = last;
             Country = country;
+            Best = bestSwim;
 
             Gold = gold;
             Silver = silver;
@@ -46,6 +50,9 @@ namespace English_ZP3_Project.Models
             Birthday = SetBirthday(birthDay, month, year);
             Age = SetAge(birthDay, month, year);
         }
+        
+        
+        
 
         #region Name
 
@@ -120,12 +127,16 @@ namespace English_ZP3_Project.Models
 
             return age;
         }
+
+        public bool Passed { get; set; }
         #endregion Birthday
 
         public string Country
         {
             get;set;
         }
+
+        public string Best { get; set; }
 
         #region Medals
         public int Gold { get; set; }
@@ -177,6 +188,9 @@ namespace English_ZP3_Project.Models
                                           "." +
                                           type);
         }
+
+
+
     }
 }
 

@@ -18,8 +18,8 @@ namespace English_ZP3_Project.Controllers
         public IActionResult Biographies()
         {
             List<Swimmer> swimmers = new();
-            swimmers.Add(new Swimmer("Michael", "Phelps", 30, 6, 1985, "USA",23,3,2));
-            swimmers.Add(new Swimmer("Michael", "Phelps 2", 30, 6, 1985, "USA",23,3,2));
+            swimmers.Add(new Swimmer("Michael", "Phelps", 30, 6, 1985, "USA", "idk", 23,3,2, false));
+            swimmers.Add(new Swimmer("Michael", "Jackson", 29, 8, 1958, "USA","idk", 0,0,0, true));
 
             return View(swimmers);
         }

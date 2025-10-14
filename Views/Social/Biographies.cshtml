@@ -7,8 +7,6 @@
 
 <h1 class="title">Biographies</h1>
 
-
-
 <div class="bio-container">
 
     @foreach (Swimmer swimmer in Model)
@@ -21,14 +19,28 @@
             <div class="image" style="background-image: url(@swimmer.Image);"> </div>
 
             <div class="swimmer-info"> 
-                <span class="age">
-                    @swimmer.Age years old
-                </span>
+
+                @if (swimmer.Passed)
+                {
+                    <span class="age">
+                        Deceased
+                    </span>
+                }
+                else
+                {
+                    <span class="age">
+                        @swimmer.Age years old
+                    </span>
+                }
+                
                 <h2>
                     @swimmer.Name
                 </h2>
                 <p>
-                    lorem ipsum wtvugyukgtifi cyifbg bfjvj tfvjhytdic tiyfvyivg  fctrfeujfv cyfcjcjg curdjctb  
+                    Team @swimmer.Country 
+                    <br />
+                    Best swim(s) : @swimmer.Best
+
                 </p>
             </div>
 
