@@ -30,6 +30,15 @@ namespace English_ZP3_Project.Controllers
             return View(files);
         }
 
+        public IActionResult Reports()
+        {
+            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files", "reports");
+            List<string> pdfPaths = Directory.GetFiles(folderPath, "*.pdf", SearchOption.AllDirectories)
+                .Select(p => p.Replace(Directory.GetCurrentDirectory() + "\\wwwroot", "").Replace("\\", "/"))
+                .ToList();
+
+            return View(pdfPaths);
+        }
         public IActionResult Techniques()
         {
             return View();

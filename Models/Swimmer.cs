@@ -112,7 +112,8 @@ namespace English_ZP3_Project.Models
             }
 
             date += month + ".";
-            date += year.ToString()[2] + year.ToString()[3];
+            date += year.ToString()[2];
+            date+= year.ToString()[3];
 
             return date;
         }

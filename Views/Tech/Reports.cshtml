@@ -1,0 +1,31 @@
+﻿@model List<string>
+
+<h1 class="title">Reports</h1>
+
+<div id="reports-container" class="reports-container">
+    @foreach (string pdfPath in Model)
+    {
+        <div class="report-card" onclick="openFullScreen('@pdfPath')">
+            <img src="~/images/pdf-icon.png" alt="PDF" class="pdf-icon" />
+            <p>@System.IO.Path.GetFileName(pdfPath)</p>
+        </div>
+    }
+</div>
+
+<div id="full-screen-view" class="full-screen hidden" onclick="closeFullScreen()">
+    <iframe id="full-pdf" class="full-pdf"></iframe>
+</div>
+
+<script>
+    function openFullScreen(pdfPath) {
+        document.getElementById("reports-container").classList.add("hidden");
+        document.getElementById("full-screen-view").classList.remove("hidden");
+        document.getElementById("full-pdf").src = pdfPath;
+    }
+
+    function closeFullScreen() {
+        document.getElementById("reports-container").classList.remove("hidden");
+        document.getElementById("full-screen-view").classList.add("hidden");
+        document.getElementById("full-pdf").src = "";
+    }
+</script>
