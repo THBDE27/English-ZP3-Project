@@ -11,8 +11,8 @@ namespace English_ZP3_Project.Controllers
         //NAOMIE
         List<Swimmer> swimmers = new()
         { 
-        new Swimmer("Michael", "Phelps", 30, 6, 1985, "USA", "butterly and individual medley", 23,3,2, false)
-        new Swimmer("Gretchen", "Walsh", 29, 1, 2003, "USA", "freestyle and butterfly", 2, 2, 0, false) )
+        new Swimmer("Michael", "Phelps", 30, 6, 1985, "USA", "butterly and individual medley", 23,3,2, false),
+        new Swimmer("Gretchen", "Walsh", 29, 1, 2003, "USA", "freestyle and butterfly", 2, 2, 0, false )
         };
 
         public IActionResult Biographies()
