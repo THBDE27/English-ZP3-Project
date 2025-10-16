@@ -8,16 +8,16 @@ namespace English_ZP3_Project.Controllers
 {
     public class TechController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IWebHostEnvironment _env;
 
-        public TechController(ILogger<HomeController> logger)
+        public TechController(IWebHostEnvironment env)
         {
-            _logger = logger;
+            _env = env;
         }
 
         public IActionResult Technology()
         {
-            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files", "technologies");
+            string folderPath = Path.Combine(_env.WebRootPath, "files", "technologies");
 
             string[] fileNames = Directory.GetFiles(folderPath, "*.txt");
             List<Technology> files = new();
@@ -30,18 +30,27 @@ namespace English_ZP3_Project.Controllers
             return View(files);
         }
 
-        public IActionResult Reports()
-        {
-            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files", "reports");
-            List<string> pdfPaths = Directory.GetFiles(folderPath, "*.pdf", SearchOption.AllDirectories)
-                .Select(p => p.Replace(Directory.GetCurrentDirectory() + "\\wwwroot", "").Replace("\\", "/"))
-                .ToList();
+       
 
-            return View(pdfPaths);
-        }
         public IActionResult Techniques()
         {
             return View();
+        }
+
+        public IActionResult Reports()
+        {
+            string folderPath = Path.Combine(_env.WebRootPath, "files", "reports");
+
+            string[] pdfPaths = Directory.GetFiles(folderPath, "*.pdf");
+
+
+            List<ReportFile> files = new();
+            foreach (string pdfPath in pdfPaths)
+            {
+                files.Add(new(pdfPath));
+            }
+
+            return View(files);
         }
     }
 }
