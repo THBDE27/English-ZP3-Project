@@ -4,7 +4,7 @@ namespace English_ZP3_Project.Models
 {
     public class Technology
     {
-
+        
         public Technology(string path)
         {
             FilePath = path;

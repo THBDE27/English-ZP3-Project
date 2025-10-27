@@ -29,8 +29,12 @@
 
 
                 <!-- HOME SCREEN WITH INTRO-->
-                <a class="navbar-brand font-cookie text-white" asp-area="" asp-controller="Home" asp-action="Index" 
-                   style="font-size: 75px;">Swimming</a>
+                <a class="navbar-brand font-cookie text-white" asp-area="" asp-controller="Home" asp-action="Index"
+                   style="text-decoration: none; line-height: 1; display: inline-block; text-align: center;">
+                    <span style="display: block; font-size: 40px; margin-bottom: -15px;">The study of</span>
+                    <span style="display: block; font-size: 75px;">Swimming</span>
+                </a>
+
 
 
 
@@ -56,132 +60,74 @@
                     <ul class="navbar-nav flex-grow-1">
 
                         <!-- TECH -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" 
-                               id="techDropdown" 
-                               role="button" 
-                               data-bs-toggle="dropdown" 
-                               aria-expanded="false" >
-                                Tech
+                        <li>
+                            <a class="nav-link dropdown-toggle text-white"
+                               asp-area=""
+                               asp-controller="Technology"
+                               asp-action="Technology">
+
+                                Technology
                             </a>
 
-
-                            <ul class="dropdown-menu" 
-                                aria-labelledby="techDropdown">
-
-
-                                <!-- TECHNOLOGY -->
-                                <li>
-                                    <a class="dropdown-item" asp-area=""
-                                                             asp-controller="Tech" 
-                                                             asp-action="Technology">
-                                                             
-                                         Technology
-                                     </a>
-                                     
-                                 </li>
-
-                                <!-- TECHNIQUES -->
-                                <li>
-                                    <a class="dropdown-item" asp-area="" 
-                                                             asp-controller="Tech" 
-                                                             asp-action="Techniques">
-                                       Techniques
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
 
-                        <!-- HEALTH -->
+                        <!-- TECHNIQUES -->
+                        <li>
+                            <a class="nav-link dropdown-toggle text-white"
+                               asp-area=""
+                               asp-controller="Physics"
+                               asp-action="Physics">
+                                Physics
+                            </a>
+                        </li>
+
+                        <!-- BIOLOGY -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" 
-                               id="healthDropdown" 
+                               id="socialDropdown" 
                                role="button" 
                                data-bs-toggle="dropdown" 
                                aria-expanded="false" >
-                                Health
+                                Biology
                             </a>
-
-
                             <ul class="dropdown-menu" 
-                                aria-labelledby="healthDropdown">
+                                aria-labelledby="socialDropdown">
 
-                                <!-- PHYSICAL EXAM -->
+
                                 <li>
                                     <a class="dropdown-item" asp-area="" 
-                                                             asp-controller="Health" 
+                                                             asp-controller="Biology" 
+                                                             asp-action="Biographies">Famous Anatomies</a></li>
+
+
+                                <li>
+                                    <a class="dropdown-item" asp-area="" 
+                                                             asp-controller="Biology" 
+                                                             asp-action="Benefits">Health Benefits</a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-area="" 
+                                                             asp-controller="Biology" 
                                                              asp-action="PhysicalExam">
-                                                             
-                                        Physical exam
-                                    </a>
-                                </li>
-
-                                <!-- BENEFITS -->
-                                <li>
-                                    <a class="dropdown-item" asp-area="" 
-                                                             asp-controller="Health" 
-                                                             asp-action="Benefits">
-                                        Benefits
-                                    </a>
-                                </li>
-
-                                <!-- WORKOUT PLANS -->
-                                <li>
-                                    <a class="dropdown-item" asp-area="" 
-                                                             asp-controller="Health" 
-                                                             asp-action="WorkoutPlan">
-                                      Workout plan
+                                           Muscles
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
-                        <!-- SOCIAL -->
+                        <!-- CONCLUSION -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" 
                                id="socialDropdown" 
                                role="button" 
-                               data-bs-toggle="dropdown" 
-                               aria-expanded="false" >
-                                Social
+                               asp-area=""
+                               asp-controller="Conclusion"
+                               asp-action="Reports">
+                                Conclusion
                             </a>
-                            <ul class="dropdown-menu" 
-                                aria-labelledby="socialDropdown">
 
-
-                                <li>
-                                    <a class="dropdown-item" asp-area="" 
-                                                             asp-controller="Social" 
-                                                             asp-action="Biographies">Biographies</a></li>
-
-
-                                <li>
-                                    <a class="dropdown-item" asp-area="" 
-                                                             asp-controller="Social" 
-                                                             asp-action="Events">Events</a></li>
-                            </ul>
-                        </li>
-                        <!-- ABOUT -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" 
-                               id="socialDropdown" 
-                               role="button" 
-                               data-bs-toggle="dropdown" 
-                               aria-expanded="false" >
-                                About
-                            </a>
-                            <ul class="dropdown-menu" 
-                                aria-labelledby="socialDropdown">
-
-
-                                <li>
-                                    <a class="dropdown-item" asp-area="" 
-                                                             asp-controller="Tech" 
-                                                             asp-action="Reports">Reports</a></li>
-
-
-                                
-                            </ul>
+                           
                         </li>
 
                     </ul>

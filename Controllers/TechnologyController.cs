@@ -6,11 +6,11 @@ using NuGet.Packaging;
 
 namespace English_ZP3_Project.Controllers
 {
-    public class TechController : Controller
+    public class TechnologyController : Controller
     {
         private readonly IWebHostEnvironment _env;
 
-        public TechController(IWebHostEnvironment env)
+        public TechnologyController(IWebHostEnvironment env)
         {
             _env = env;
         }

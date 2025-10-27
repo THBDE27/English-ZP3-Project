@@ -15,21 +15,23 @@ html {
     font-size: 3rem;
 }
 
+
 .navbar .dropdown-toggle::after {
     display: none;
 }
 
 .navbar .dropdown-menu {
     background-color:#452FBA; 
+    color:white;
     border: none; 
 }
 
-.navbar .dropdown-menu .dropdown-item:hover {
+.dropdown-item:hover {
         background-color: #5B49BB;
         color: white;
     }
 
-.navbar .dropdown-menu .dropdown-item {
+.dropdown-item {
     font-size: 36px; /* adjust as needed */
     padding: 0.5rem 1rem; /* optional: bigger clickable area */
     color: white; /* text color */
@@ -40,6 +42,7 @@ html {
     height: 100px; /* desired height */
     object-fit: cover; /* crop/scale image to fill container */
     display: block;
+    color:white;
 }
 
 .title {
