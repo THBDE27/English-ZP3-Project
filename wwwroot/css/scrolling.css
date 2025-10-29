@@ -54,12 +54,13 @@
 
 
 .event-date {
-    font-size: 14px;
+    font-size: 18px;
     display:flex;
     align-content: center;
     justify-content:center;
-    letter-spacing:4px;
+    letter-spacing:2px;
    margin-bottom:10px;
+   font-weight: 600;
 }
 
 .para {
