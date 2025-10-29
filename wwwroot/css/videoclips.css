@@ -1,0 +1,19 @@
+﻿.video-container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.video-container video{
+    flex: 1 1 calc(25% - 10px);
+    max-width:100%;
+    height:auto;
+    border-radius:18px;
+}
+
+@media(max-width:768px){
+    .video-container video {
+        flex: 1 1 100%;
+    }
+
+}

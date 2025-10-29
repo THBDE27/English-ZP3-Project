@@ -1,12 +1,19 @@
-﻿
+﻿@using static System.Runtime.InteropServices.JavaScript.JSType
+@model List<string>
 @{
     ViewData["Title"] = "Techniques";
 }
+<link rel="stylesheet" href="~/css/videoclips.css" asp-append-version="true" />
 
 <h1 class="title">Techniques</h1>
 
-<div>
-    <video width="320" height="240" controls>
-        <source src="/videos/Freestyle.mp4" type=video/mp4>
-    </video>
+<div class="video-container">
+
+    @foreach(string vid in Model)
+    {
+        <video width="320" height="240" controls>
+            <source src=@vid type=video/mp4>
+        </video>
+    }
+    
 </div>

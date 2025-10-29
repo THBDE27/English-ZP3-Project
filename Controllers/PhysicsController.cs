@@ -1,13 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using English_ZP3_Project.Helpers;
+using Microsoft.AspNetCore.Mvc;
+using static NuGet.Packaging.PackagingConstants;
 
 namespace English_ZP3_Project.Controllers
 {
     public class PhysicsController : Controller
     {
-        public IActionResult Techniques()
+        private readonly FileHelper _fileHelper;
+
+        public PhysicsController(FileHelper fileHelper)
         {
-            List<string> videos;
-            return View();
+            _fileHelper = fileHelper;
+        }
+
+        public IActionResult Techniques()
+        { 
+            return View(_fileHelper.GetVideoSources("videos"));
         }
     }
 }
