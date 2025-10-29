@@ -1,0 +1,116 @@
+﻿body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.subtitle {
+    display: 4;
+    text-align: center;
+    font: cookie;
+    margin-top: -75px;
+    margin-bottom: 10px;
+    font-family: 'Cookie', cursive;
+    font-size: 3rem;
+}
+
+.center {
+    width: 450px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.slider {
+    width: 100%;
+    height: fit-content;
+    padding: 70px calc(50% - 200px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    display: flex;
+    gap: 40px;
+}
+
+.slider::-webkit-scrollbar {
+    width: 80px;
+    height: 5px;
+}
+
+.slider::-webkit-scrollbar-thumb {
+    background: midnightblue;
+    border-radius: 10px;
+}
+
+.slider::-webkit-scrollbar-track {
+    background: rgba(37, 35, 225, 0.2);
+}
+
+
+
+
+.event-date {
+    font-size: 14px;
+    display:flex;
+    align-content: center;
+    justify-content:center;
+    letter-spacing:4px;
+   margin-bottom:10px;
+}
+
+.para {
+    width: 400px;
+    height: 500px;
+    background: #452FBA;
+    box-shadow: 0 20px 20px rgba(118, 119, 249, 0.4);
+    font-family: poppins;
+    position: relative;
+    margin: 0 20px;
+    border-radius: 18px;
+    scroll-snap-align: center;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertical centering */
+    align-items: center; /* horizontal centering */
+}
+
+.information {
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-y: auto;
+    padding: 6px;
+    
+    text-align: center;
+    display: inline-block; /* shrink to content so flex centering works */
+    max-height: 100%;
+}
+
+
+
+
+    /* Vertical scrollbar matches horizontal slider */
+    .information::-webkit-scrollbar {
+        width: 5px; /* same as horizontal height */
+    }
+
+    .information::-webkit-scrollbar-thumb {
+        background: midnightblue; /* same as horizontal thumb */
+        border-radius: 10px;
+    }
+
+    .information::-webkit-scrollbar-track {
+        background: rgba(37, 35, 225, 0.2); /* same as horizontal track */
+    }
+
+.cards {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

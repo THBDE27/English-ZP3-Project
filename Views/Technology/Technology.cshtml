@@ -1,78 +1,29 @@
-﻿@model List<Technology>
+﻿@using English_ZP3_Project.Models.Technologies
+@model Technology
 @{
-    ViewData["Title"] = "Technology";
+    ViewData["Title"] = Model.Name;
 }
 
-<link rel="stylesheet" href="~/css/timeline.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/scrolling.css" asp-append-version="true" />
 
-<h1 class="title">Technology</h1>
-
-
-<span> timeline of technology related to swimming</span>
-
-
+<h1 class="title">@Model.Name</h1>
+ 
 <div class="center">
     <div class="slider">
         <div class="cards">
-            <div class="card">
-                <div class="title">HTML</div>
-                <div class="subtitle">Bootcamp</div>
-                <span class="material-icons">north_east</span>
-            </div>
 
-            <div class="card">
-                <div class="title">CSS</div>
-                <div class="subtitle">Mastery</div>
-                <span class="material-icons">north_east</span>
-            </div>
-
-            <div class="card">
-                <div class="title">JavaScript</div>
-                <div class="subtitle">Crash Course</div>
-                <span class="material-icons">north_east</span>
-            </div>
-
-            <div class="card">
-                <div class="title">Front End</div>
-                <div class="subtitle">Framworks</div>
-                <span class="material-icons">north_east</span>
-            </div>
-
-            <div class="card">
-                <div class="title">UI/UX</div>
-                <div class="subtitle">Bootcamp</div>
-                <span class="material-icons">north_east</span>
-            </div>
-
-            <div class="card">
-                <div class="title">SASS & LESS</div>
-                <div class="subtitle">Advanced Styling</div>
-                <span class="material-icons">north_east</span>
-            </div>
-
-            <div class="card">
-                <div class="title">Bootstrape</div>
-                <div class="subtitle">Sessions</div>
-                <span class="material-icons">north_east</span>
-            </div>
-
-            <div class="card">
-                <div class="title">React</div>
-                <div class="subtitle">Development</div>
-                <span class="material-icons">north_east</span>
-            </div>
-
-            <div class="card">
-                <div class="title">Node.JS</div>
-                <div class="subtitle">Tutorials</div>
-                <span class="material-icons">north_east</span>
-            </div>
-
-            <div class="card">
-                <div class="title">API</div>
-                <div class="subtitle">Integration</div>
-                <span class="material-icons">north_east</span>
-            </div>
+            @foreach (TechUpdate e in Model.Updates)
+            {
+                <div class="card-wrapper">
+                    <div class="event-header">
+                        <h2 class="subtitle">@e.Name</h2>
+                        <div class="event-date">@e.Date</div>
+                    </div>
+                    <div class="para">
+                        <span class="information">@e.Info</span>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>

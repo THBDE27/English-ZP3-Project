@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Globalization;
 using English_ZP3_Project.Models;
+using English_ZP3_Project.Models.Technologies;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Packaging;
 
@@ -8,38 +9,24 @@ namespace English_ZP3_Project.Controllers
 {
     public class TechnologyController : Controller
     {
-        private readonly IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment Env;
 
         public TechnologyController(IWebHostEnvironment env)
         {
-            _env = env;
+            Env = env;
         }
 
-        public IActionResult Technology()
+        public IActionResult Technology(string id)
         {
-            string folderPath = Path.Combine(_env.WebRootPath, "files", "technologies");
-
-            string[] fileNames = Directory.GetFiles(folderPath, "*.txt");
-            List<Technology> files = new();
-
-            foreach (string fileName in fileNames)
-            {
-                files.Add(new Technology(fileName));
-            }
-
-            return View(files);
+            return View(new Technology(id, Env));
         }
 
-       
 
-        public IActionResult Techniques()
-        {
-            return View();
-        }
+
 
         public IActionResult Reports()
         {
-            string folderPath = Path.Combine(_env.WebRootPath, "files", "reports");
+            string folderPath = Path.Combine(Env.WebRootPath, "files", "reports");
 
             string[] pdfPaths = Directory.GetFiles(folderPath, "*.pdf");
 

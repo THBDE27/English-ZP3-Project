@@ -1,5 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using English_ZP3_Project.Helpers
+
+<!DOCTYPE html>
 <html lang="en">
+@inject FolderHelper FolderHelper
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -59,16 +62,38 @@
 
                     <ul class="navbar-nav flex-grow-1">
 
-                        <!-- TECH -->
-                        <li>
-                            <a class="nav-link dropdown-toggle text-white"
-                               asp-area=""
-                               asp-controller="Technology"
-                               asp-action="Technology">
+                        <!-- TECHNOLOGY -->
+                        <li class="nav-item dropdown">
 
+                            
+                            <a class="nav-link dropdown-toggle text-white"
+                               id="socialDropdown"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">
                                 Technology
                             </a>
+                            <ul class="dropdown-menu"
+                                aria-labelledby="socialDropdown">
 
+                                @{
+                                    List<string> folders = FolderHelper.GetSubFolderNames("files/technologies");
+
+                                foreach (string folder in folders)
+                                {
+                                    <li>
+                                        <a class="dropdown-item" 
+                                           asp-area=""
+                                           asp-controller="Technology"
+                                           asp-action="Technology"
+                                           asp-route-id="@folder">
+                                            @folder
+                                        </a>
+                                    </li>
+                                }
+                                }
+                                
+                            </ul>
                         </li>
 
                         <!-- TECHNIQUES -->
@@ -76,7 +101,7 @@
                             <a class="nav-link dropdown-toggle text-white"
                                asp-area=""
                                asp-controller="Physics"
-                               asp-action="Physics">
+                               asp-action="Techniques">
                                 Physics
                             </a>
                         </li>
@@ -116,19 +141,41 @@
                             </ul>
                         </li>
 
-                        <!-- CONCLUSION -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" 
-                               id="socialDropdown" 
-                               role="button" 
-                               asp-area=""
-                               asp-controller="Conclusion"
-                               asp-action="Reports">
+                            <a class="nav-link dropdown-toggle text-white"
+                               id="socialDropdown"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">
                                 Conclusion
                             </a>
+                            <ul class="dropdown-menu"
+                                aria-labelledby="socialDropdown">
 
-                           
+
+                                <li>
+                                    <a class="dropdown-item" asp-area=""
+                                       asp-controller="Conclusion"
+                                       asp-action="Conclusion">Impact</a>
+                                </li>
+
+
+                                <li>
+                                    <a class="dropdown-item" asp-area=""
+                                       asp-controller="Biology"
+                                       asp-action="Benefits">Beating Records</a>
+                                </li>
+
+                                <li> @* link to GitBook? *@
+                                    <a class="dropdown-item" asp-area=""
+                                       asp-controller="Biology"
+                                       asp-action="PhysicalExam">
+                                        Behind the Scenes
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
+
 
                     </ul>
 

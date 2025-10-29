@@ -1,7 +1,11 @@
+using English_ZP3_Project.Helpers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<FolderHelper>();
+
 
 var app = builder.Build();
 

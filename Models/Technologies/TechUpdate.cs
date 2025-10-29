@@ -1,11 +1,11 @@
 ﻿using System.Drawing;
 
-namespace English_ZP3_Project.Models
+namespace English_ZP3_Project.Models.Technologies
 {
-    public class Technology
+    public class TechUpdate
     {
         
-        public Technology(string path)
+        public TechUpdate(string path)
         {
             FilePath = path;
         }
@@ -44,7 +44,7 @@ namespace English_ZP3_Project.Models
         {
             get
             {
-                return System.IO.File.ReadAllText(FilePath);
+                return File.ReadAllText(FilePath);
             }
         }
         public string Date
