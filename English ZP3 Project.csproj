@@ -16,6 +16,7 @@
     <Folder Include="wwwroot\files\technologies\Starting Blocks\" />
     <Folder Include="wwwroot\files\technologies\Supersuits\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\videos\" />
   </ItemGroup>
 
   <ItemGroup>
