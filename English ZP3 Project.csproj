@@ -9,6 +9,10 @@
 
   <ItemGroup>
     <Folder Include="Views\About\" />
+    <Folder Include="wwwroot\files\muscles\Backstroke\" />
+    <Folder Include="wwwroot\files\muscles\Breaststroke\" />
+    <Folder Include="wwwroot\files\muscles\Butterfly\" />
+    <Folder Include="wwwroot\files\muscles\Freestyle\" />
     <Folder Include="wwwroot\files\videos\" />
     <Folder Include="wwwroot\files\technologies\Goggles\" />
     <Folder Include="wwwroot\files\technologies\Starting Blocks\" />
