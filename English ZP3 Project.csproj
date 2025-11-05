@@ -17,6 +17,7 @@
     <Folder Include="wwwroot\files\technologies\Goggles\" />
     <Folder Include="wwwroot\files\technologies\Starting Blocks\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\UnityGame\" />
     <Folder Include="wwwroot\videos\" />
   </ItemGroup>
 
