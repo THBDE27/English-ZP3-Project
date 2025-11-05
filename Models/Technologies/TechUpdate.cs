@@ -23,21 +23,14 @@ namespace English_ZP3_Project.Models.Technologies
             get
             {
                 string name = FileName;
-                int i = 1;
 
-                name = name.Replace(Date, "");
                 name = name.Replace(".txt", "");
-                do
-                {
-                    if (char.IsUpper(name[i]) || name[i] == ':')
-                    {
-                        name = name.Insert(i, " ");
-                        ++i;
-                    }
-                    ++i;
-                }
-                while (i < name.Length);
-                return name;
+                char stopChar = '-';
+
+                int index = name.IndexOf(stopChar);
+                string result = index >= 0 ? name.Substring(index + 1) : name;
+
+                return result;
             }
         }
         public string Info
@@ -47,28 +40,6 @@ namespace English_ZP3_Project.Models.Technologies
                 return File.ReadAllText(FilePath);
             }
         }
-        public string Date
-        {
-            get
-            {
-                string date = FileName;
-                bool isDate = true;
-                int i = 0;
-
-                while (isDate)
-                {
-                    if (char.IsUpper(date[i]))
-                    {
-                        isDate = false;
-                        date = date.Remove(i);
-                    }
-                    else
-                    {
-                        i++;
-                    }
-                }
-                return date;
-            }
+        
         }
     }
-}

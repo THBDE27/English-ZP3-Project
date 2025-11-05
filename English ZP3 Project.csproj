@@ -11,10 +11,7 @@
     <Folder Include="Views\About\" />
     <Folder Include="wwwroot\files\videos\" />
     <Folder Include="wwwroot\files\technologies\Goggles\" />
-    <Folder Include="wwwroot\files\technologies\Modern Suits\" />
-    <Folder Include="wwwroot\files\technologies\Power Racks\" />
     <Folder Include="wwwroot\files\technologies\Starting Blocks\" />
-    <Folder Include="wwwroot\files\technologies\Supersuits\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\videos\" />
   </ItemGroup>
