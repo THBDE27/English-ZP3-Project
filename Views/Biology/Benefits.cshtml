@@ -1,7 +1,19 @@
-﻿
-@{
-    ViewData["Title"] = "Benefits";
-}
+﻿@model List<English_ZP3_Project.Models.Question>
 
-<h1>Benefits</h1>
+<h1>Quiz</h1>
 
+<div id="quiz-container">
+    <div id="question-box" data-index="0">
+        <p id="question-text"></p>
+        <div id="options"></div>
+        <p id="result"></p>
+        <p id="explanation" style="display:none; color:blue;"></p>
+    </div>
+</div>
+
+<button id="next-btn" style="display:none;">Next</button>
+
+<script>
+    const questions = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model));
+</script>
+<script src="~/js/quiz.js" asp-append-version="true"></script>

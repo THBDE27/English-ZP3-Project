@@ -6,6 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<FolderHelper>();
 builder.Services.AddScoped<FileHelper>();
+builder.Services.AddScoped<QuizHelper>();
+
+
+
 
 
 var app = builder.Build();

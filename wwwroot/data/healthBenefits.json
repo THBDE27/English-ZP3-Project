@@ -1,0 +1,65 @@
+﻿[
+    {
+      "id": 1,
+      "text": "What makes swimming a good form of exercise for people with limited mobility?",
+      "options": [
+        "It’s only lower body focused.",
+        "Water supports the body, reducing strain on joints.",
+        "It’s only upper body focused.",
+        "It’s done in slow motion."
+      ],
+      "correctOption": 1,
+      "explanation": "Water helps people with low mobility to be able to move with more ease than when they are on the ground."
+    },
+    {
+      "id": 2,
+      "text": "Which mental health benefit is commonly associated with swimming?",
+      "options": [
+        "Increased anger levels",
+        "Higher stress and anxiety",
+        "Improved mood and reduced stress",
+        "Impaired sleep patterns"
+      ],
+      "correctOption": 2,
+      "explanation": "Swimming, just like any physical activity helps the mood and reduce stress. For some people, being in the water can help to disconnect and be alone with themselves."
+    },
+    {
+      "id": 3,
+      "text": "Which part of your body does swimming exercise?",
+      "options": [
+        "Just your arms",
+        "Just your legs",
+        "Your core",
+        "Your back",
+        "All of the above"
+      ],
+      "correctOption": 4,
+      "explanation": "Swimming is a sport that trains all of the major muscles groups."
+    },
+
+    {
+      "id": 4,
+      "text": "True or False: Swimming is considered a low-impact exercise, making it suitable for people with joint pain or arthritis.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctOption": 0,
+      "explanation": "The water supports the body, which puts less strain on the joints, providing some relief for people with joint pain or arthritis."
+    },
+
+    {
+      "id": 5,
+      "text": "How many strokes are there in competitive swimming?",
+      "options": [
+        "2",
+        "4",
+        "6",
+        "12"
+      ],
+      "correctOption": 1,
+      "explanation": "There are 4 strokes : freestyle (crawl), backstroke, breaststroke and butterfly."
+    }
+  ]
+
+
