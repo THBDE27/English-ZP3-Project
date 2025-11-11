@@ -16,18 +16,8 @@ namespace English_ZP3_Project.Controllers
 
         public IActionResult Index()
         {
-            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files");
-
-            // Read both files
-            string enFile = Path.Combine(folderPath, "introen.txt");
-            string frFile = Path.Combine(folderPath, "introfr.txt");
-
-            string enText = System.IO.File.ReadAllText(enFile);
-            string frText = System.IO.File.ReadAllText(frFile);
-
-            // Pass to ViewBag
-            ViewBag.EnText = enText;
-            ViewBag.FrText = frText;
+           
+            
 
             return View();
         }

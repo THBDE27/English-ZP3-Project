@@ -28,5 +28,17 @@ namespace English_ZP3_Project.Controllers
 
             return View(files);
         }
-    }
+
+        public IActionResult Glossary()
+        {
+
+            return View(Word.GetGlossary());
+        }
+
+
+  
+
+
+
+} 
 }

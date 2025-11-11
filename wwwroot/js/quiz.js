@@ -25,7 +25,7 @@ function showQuestion(index) {
 // Check answer function (calls controller)
 async function checkAnswer(questionId, selectedOption) {
     const response = await fetch('/HealthBenefits/CheckAnswer', {
-        method: 'POST',
+        method: 'POST', 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ questionId, selectedOption })
     });

@@ -69,3 +69,15 @@ body {
   margin-bottom: 60px;
   background-color:white;
 }
+
+.glossary-link {
+    color: #007bff; /* your preferred color, e.g. blue */
+    font-weight: bold;
+    text-decoration: none; /* remove underline if you want */
+    cursor: pointer;
+}
+
+    .glossary-link:hover {
+        color: red; /* darker shade on hover */
+        text-decoration: underline;
+    }
