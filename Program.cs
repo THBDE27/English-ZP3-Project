@@ -9,9 +9,6 @@ builder.Services.AddScoped<FileHelper>();
 builder.Services.AddScoped<QuizHelper>();
 
 
-
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

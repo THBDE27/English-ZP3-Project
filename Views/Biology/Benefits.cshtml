@@ -14,6 +14,6 @@
 <button id="next-btn" style="display:none;">Next</button>
 
 <script>
-    const questions = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model));
+    const questions = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model))
 </script>
 <script src="~/js/quiz.js" asp-append-version="true"></script>

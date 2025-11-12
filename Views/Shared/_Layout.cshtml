@@ -1,4 +1,6 @@
 ﻿@using English_ZP3_Project.Helpers
+@using English_ZP3_Project.Models
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +90,7 @@
     </header>
 
     <div class="container">
-        <main role="main" class="pb-3" id="texte">
+        <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
@@ -99,11 +101,11 @@
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 
-@using English_ZP3_Project.Models
+
 <script>
     window.glossary = @Html.Raw(
         System.Text.Json.JsonSerializer.Serialize(
@@ -114,11 +116,18 @@
                 definition = w.Definition
             })
         )
-    );
+    )
 </script>
 
+<!-- mark.js library -->
+<script src="https://cdn.jsdelivr.net/npm/mark.js/dist/mark.min.js"></script>
+
+<!-- custom glossary JS -->
 <script src="~/js/glossary.js"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+
+@await RenderSectionAsync("Scripts", required: false)
+
+
 </body>
 </html>
