@@ -10,7 +10,10 @@
 {
     var safeId = word.Text.ToLower().Replace(" ", "").Replace("-", "");
     <div class="glossary-entry" id="@safeId" style="margin-bottom:20px;">
-        <strong>@word.Text</strong><br />
+        <strong>@word.Text</strong> 
+        <strong style="color:lightblue"> / @word.WordClass</strong> 
+        
+        <br />
         @word.Definition
         <br />
     </div>

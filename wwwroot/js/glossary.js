@@ -31,14 +31,14 @@
     const style = document.createElement("style");
     style.textContent = `
     .glossary-link {
-        color:red;
+        color:lightblue;
           text-decoration: underline;
         cursor: pointer;
         font-weight: bold;
     }
 
     .glossary-link:hover {
-        color: red; /* color when hovering */
+        color: lightblue; /* color when hovering */
     }
 `;
     document.head.appendChild(style);

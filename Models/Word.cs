@@ -1,9 +1,14 @@
 ﻿using Humanizer;
 using Humanizer.Localisation;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Build.Evaluation;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 using Microsoft.CodeAnalysis.Elfie.Serialization;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Mono.TextTemplating;
+using Newtonsoft.Json.Linq;
 using NuGet.Protocol;
 using System;
 using System.Collections.Generic;
@@ -11,17 +16,28 @@ using System.Composition;
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
 using System.Net.NetworkInformation;
+using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Timers;
+using static Microsoft.AspNetCore.Razor.Language.TagHelperMetadata;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace English_ZP3_Project.Models
 {
     public class Word
     {
-        public string Text { get; set; }
+        string _text = " ";
+        public string Text
+        {
+            get => _text
+            ; set
+            {
+                _text = value;
+            }
+        }            
         public string? Plural { get; set; }
         public string Definition { get; set; }
         public string WordClass { get; set; }
@@ -43,38 +59,53 @@ namespace English_ZP3_Project.Models
         // Glossary words
         public static List<Word> GetGlossary()
         {
-            return new List<Word>
+           List<Word> words = new
+           List<Word>
             {
-                new Word("neuromuscular coordination", " It is the brain-to-muscle communication that allows the body to execute movement effectively. It is the harmonious interaction between the nervous system and the muscles. ", "noun"),
-                new Word("central nervous system", "It is the main control center of the body. It is made up of two primary structures: the brain and the nervous system. It receives sensory input, processes the information, and sends out motor signals to control the body’s actions and functions. ", "noun"),
-                new Word("fast-twitch muscle fiber", "Also known as “Type II fibers” are muscle cells specialized for short, powerful, and explosive movements. They are the “sprint” muscles, designed for speed and strength rather than endurance. ", "noun", "fast-twitch muscle fibers"),
-                new Word("polyurethane", "It is a highly versatile class of polymers (a type of plastic) known for its ability to be customized into materials ranging from soft, flexible foam, to hard, durable solid. ", "noun"),
-                new Word("hydrophobic", "Meaning water-fearing. In the context of chemistry and materials science, it describes a substance, molecule, or surface that lacks an affinity for water and tends to repel it. ", "adjective"),
-                new Word("lactic acid", "It is a chemical byproduct created when the body’s cell (like muscle cells or red blood cells) or certain bacteria break down from glucose for energy without enough oxygen. It is produced rapidly during intense exercise when oxygen supply can’t keep up with energy demand. It is quickly converted to lactate and used by other cells as an alternative fuel source.  ", "noun", "lactic acids"),
-                new Word("FINA", "Stands for “International Swimming Federation”. It was the original name of the international governing body for aquatic sports. It was the organization responsible for establishing the rules, verifying world records, and managing the international competitions for all the aquatic sports. In December 2022, they officially rebranded and changed their name to “World Aquatics”. ", "organization"),
-                new Word("NCAA", "Stands for “National Collegiate Athletic Association“. It is a non-profit organization that regulates and organizes student athletics over 1,100 colleges and universities in the United States. It governs the eligibility, competition, and championships for close to a million college athletes across three divisions", "organization"),
-                new Word("distance swimming", "Groups the freestyle events of a longer distance: the 200m, 400m, 800m, 1500m events. They require more endurance and pacing", "noun"),
-                new Word("sprint swimming", "Groups the distances of the 50m and 100m of all strokes. They require more explosivity and aggressiveness", "noun"),
-                new Word("aerobic capacity", "It is the maximum rate at which the body can effectively use oxygen during intense, sustained exercise and the ability of the cardiovascular and respiratory systems to supply oxygen to the muscles", "noun"),
-                new Word("anchored", "The action of closing the relay team, holding down the effort for a strong finish to the wall during your part of the race, anchoring", "verb"),
-                new Word("short course", "Meaning that the distances swam are in a 25-meter pool", "noun"),
-                new Word("long course", "Meaning that the distances swam are in a 50-meter pool", "noun"),
-
-                new Word("a-final", "It is the last and most important race of a specific event at a competition where the podium medals are awarded afterwards and features the fastest (top 8) after the preliminaries, quarterfinals and semi-finals.  ", "noun"),
-                new Word("freestyle", "Also known as crawl or front crawl. It is the fastest and the most popular swimming stroke. It is a stroke performed face down and it is characterized by an alternating overarm movement combined with an alternating up and down kick.", "noun"),
-                new Word("backstroke", "It is the only competitive swimming stroke performed on the back. Characterized by an alternating overarm movement and alternating up and down kick. This stroke allows for easy breathing, which makes it a popular stroke for rest and recreation.", "noun"),
-                new Word("breaststroke", "It is the slowest competitive stroke. Breaststroke is performed face down characterized by its simultaneous arm movement and frog like leg movements. The arms always stay underwater", "noun"),
-                new Word("butterfly", "Swimming stroke performed face down. Characterized by a simultaneous overarm movement and a simultaneous dolphin like kick.", "noun"),
-                new Word("individual medley", "Involves the four swimming strokes in a specific order: butterfly, backstroke, breastroke, and freestyle", "noun"),
-                new Word("drag", "Resistance caused by the water slowing the swimmer down. Drag depends on the position of the swimmer, the speed, the equipment used and the technique.", "noun"),
-                new Word("momentum", "Forward movement generated by the arms or the kick.", "noun"),
-                new Word("streamline position", "Body position that creates the least amount of resistance, in which the swimmer’s body is in a long and stretched position. The arms are overhead with the hand on top of each other, biceps are tucked against the eras, the chin is tucked, the legs are straight and toes are pointed. This position is used at the start of a race, after a turn and during glide phases.", "noun"),
-                new Word("propulsive phase", "Part of the stroke where the swimmer generates forward movement by pushing against the water with its arms and legs.", "noun"),
-                new Word("glide phase", "Part of the stroke where the swimmer stays in a streamlined position and moves through the water without doing any movement to conserve momentum. The glide phase often comes after a turn or between stroke cycles.", "noun"),
-                new Word("recovery phase", " Part of the stroke where the swimmer brings its arm back to the front to prepare for the next stroke.", "noun"),
-                new Word("Swedish goggle", "A classic, minimalist, and low-profile swimming goggle, originally designed in the 1970s. They have no gaskets nor seals, using pressure and suction for a watertight seal and have a custom assembly for a perfect fit on a swimmer’s face.", "noun")
+               new Word("neuromuscular coordination", " It is the brain-to-muscle communication that allows the body to execute movement effectively. It is the harmonious interaction between the nervous system and the muscles. ", "noun"),
+ new Word("central nervous system", "It is the main control center of the body. It is made up of two primary structures: the brain and the nervous system. It receives sensory input, processes the information, and sends out motor signals to control the body’s actions and functions. ", "noun"),
+ new Word("fast-twitch muscle fiber", "Also known as “Type II fibers” are muscle cells specialized for short, powerful, and explosive movements. They are the “sprint” muscles, designed for speed and strength rather than endurance. ", "noun", "fast-twitch muscle fibers"),
+ new Word("polyurethane", "It is a highly versatile class of polymers (a type of plastic) known for its ability to be customized into materials ranging from soft, flexible foam, to hard, durable solid. ", "noun"),
+ new Word("hydrophobic", "Meaning water-fearing. In the context of chemistry and materials science, it describes a substance, molecule, or surface that lacks an affinity for water and tends to repel it. ", "adjective"),
+ new Word("lactic acid", "It is a chemical byproduct created when the body’s cell (like muscle cells or red blood cells) or certain bacteria break down from glucose for energy without enough oxygen. It is produced rapidly during intense exercise when oxygen supply can’t keep up with energy demand. It is quickly converted to lactate and used by other cells as an alternative fuel source.  ", "noun", "lactic acids"),
+ new Word("FINA", "Stands for “International Swimming Federation”. It was the original name of the international governing body for aquatic sports. It was the organization responsible for establishing the rules, verifying world records, and managing the international competitions for all the aquatic sports. In December 2022, they officially rebranded and changed their name to “World Aquatics”. ", "organization"),
+new Word("NCAA", "Stands for “National Collegiate Athletic Association“. It is a non-profit organization that regulates and organizes student athletics over 1,100 colleges and universities in the United States. It governs the eligibility, competition, and championships for close to a million college athletes across three divisions", "organization"), 
+new Word("distance swimming", "Groups the freestyle events of a longer distance: the 200m, 400m, 800m, 1500m events. They require more endurance and pacing", "noun"),
+new Word("sprint swimming", "Groups the distances of the 50m and 100m of all strokes. They require more explosivity and aggressiveness", "noun"),
+new Word("aerobic capacity", "It is the maximum rate at which the body can effectively use oxygen during intense, sustained exercise and the ability of the cardiovascular and respiratory systems to supply oxygen to the muscles", "noun"),
+new Word("anchored", "The action of closing the relay team, holding down the effort for a strong finish to the wall during your part of the race, anchoring", "verb"),
+new Word("short course", "Meaning that the distances swam are in a 25-meter pool", "noun"),
+new Word("long course", "Meaning that the distances swam are in a 50-meter pool", "noun"),
+ new Word("a-final", "It is the last and most important race of a specific event at a competition where the podium medals are awarded afterwards and features the fastest (top 8) after the preliminaries, quarterfinals and semi-finals.  ", "noun"),
+ new Word("freestyle", "Also known as crawl or front crawl. It is the fastest and the most popular swimming stroke. It is a stroke performed face down and it is characterized by an alternating overarm movement combined with an alternating up and down kick.", "noun"),
+ new Word("backstroke", "It is the only competitive swimming stroke performed on the back. Characterized by an alternating overarm movement and alternating up and down kick. This stroke allows for easy breathing, which makes it a popular stroke for rest and recreation.", "noun"),
+ new Word("breaststroke", "It is the slowest competitive stroke. Breaststroke is performed face down characterized by its simultaneous arm movement and frog like leg movements. The arms always stay underwater", "noun"),
+ new Word("butterfly", "Swimming stroke performed face down. Characterized by a simultaneous overarm movement and a simultaneous dolphin like kick.", "noun"),
+new Word("individual medley", "Involves the four swimming strokes in a specific order: butterfly, backstroke, breaststroke, and freestyle", "noun"),
+ new Word("drag", "Resistance caused by the water slowing the swimmer down. Drag depends on the position of the swimmer, the speed, the equipment used and the technique.", "noun"),
+ new Word("momentum", "Forward movement generated by the arms or the kick.", "noun"),
+ new Word("streamline position", "Body position that creates the least amount of resistance, in which the swimmer’s body is in a long and stretched position. The arms are overhead with the hand on top of each other, biceps are tucked against the eras, the chin is tucked, the legs are straight and toes are pointed. This position is used at the start of a race, after a turn and during glide phases.", "noun"),
+ new Word("propulsive phase", "Part of the stroke where the swimmer generates forward movement by pushing against the water with its arms and legs.", "noun"),
+ new Word("glide phase", "Part of the stroke where the swimmer stays in a streamlined position and moves through the water without doing any movement to conserve momentum. The glide phase often comes after a turn or between stroke cycles.", "noun"),
+new Word("recovery phase", " Part of the stroke where the swimmer brings its arm back to the front to prepare for the next stroke.", "noun"),
+new Word("Swedish goggle", "A classic, minimalist, and low-profile swimming goggle, originally designed in the 1970s. They have no gaskets nor seals, using pressure and suction for a watertight seal and have a custom assembly for a perfect fit on a swimmer’s face.", "noun"),
+new Word("resistance training", "Type of training where swimmers intentionally use factors to create more drag in order to increase strength, endurance and power.", "noun"),
+new Word("major muscles group", " Major muscles group: The five major muscles group are: chest, back, arms abdominals, legs and shoulders. These muscles are essential for exercise and movement. ", "noun"),
+new Word("low impact exercise ", "Activity that puts less stress or pressure on the articulations while still building strength and improving cardiovascular health. The most known are swimming, walking and cycling. ", "noun"),
+new Word("arthritis", "Disease that often affects people over the age of 50 and that cause the swelling, stiffness or pain of one or more joint.  The joints commonly affected are the knees, hips, feet, ankles, hands, wrists, lower back and shoulders. There’s a lot of types of arthritis, but the most common one is osteoporosis which breaks down the cartilage that protects the joint at the end of the bone over time. ", "noun "),
+new Word("stroke ", "Methods of moving the body through the water by repeating a specific movement that typically involves the arms and the legs. Competitive swimming has four strokes: freestyle, backstroke, breaststroke and butterfly. ", "noun "),
+new Word("wingspan ", " The length from one hand to the other when both arms are raised at shoulder height. ", "noun"),
+new Word("hyperextended ", " When a joint moves past its normal range of motion. ", "adjective"),
+new Word("touchpad ", "electronic pad placed at the end of the pool that records the split times and finish time of the swimmer and are activated by the swimmer touching them. ", "noun"),
+new Word("limited mobility ", "difficulty in moving freely or without pain due to a physical disability. Can be caused by aging, chronic illnesses or injuries.", "noun"),
+new Word("starts ", "Beginning of a race where the swimmers dive off the blocks at the signal which is a loud noise and a flash.", "noun"),
+new Word("turn ", "Change of direction when the swimmer reaches the wall at the end of the pool, but still has more lengths to do. ", "noun"),
+new Word("block ", "Raised platform at one end of the pool used for the swimmer to dive off when starting the race. Usually covered in an anti slippering coating with a wedge for the swimmer to rest on of its feet on. Blocks often have a handle just above water level for backstroke starts, where the swimmers start the race already in water. ", "noun"),
+new Word("sprint velocity ", "Speed of the swimmer over a really short distance. Influenced by technique and power. Often expressed as meters per second. ", "noun ")
 
             };
+
+            return words.OrderBy(p => p.Text).ToList();
         }
     }
 }
