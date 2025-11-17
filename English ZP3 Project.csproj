@@ -8,14 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\files\videos\**" />
+    <Content Remove="wwwroot\files\videos\**" />
+    <EmbeddedResource Remove="wwwroot\files\videos\**" />
+    <None Remove="wwwroot\files\videos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Views\About\" />
     <Folder Include="wwwroot\files\muscles\Backstroke\" />
     <Folder Include="wwwroot\files\muscles\Breaststroke\" />
     <Folder Include="wwwroot\files\muscles\Butterfly\" />
     <Folder Include="wwwroot\files\muscles\Freestyle\" />
-    <Folder Include="wwwroot\files\videos\" />
-    <Folder Include="wwwroot\files\technologies\Goggles\" />
-    <Folder Include="wwwroot\files\technologies\Starting Blocks\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

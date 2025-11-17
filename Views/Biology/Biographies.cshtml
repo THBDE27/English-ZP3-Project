@@ -1,4 +1,4 @@
-﻿@model List<Swimmer>
+﻿@model List<List<Swimmer>>
 @{
     ViewData["Title"] = "Biographies";
 }
@@ -9,7 +9,104 @@
 
 <div class="bio-container">
 
-    @foreach (Swimmer swimmer in Model)
+    @foreach (Swimmer swimmer in Model[0])
+    {
+
+
+        <div class="swimmer">
+
+
+            <div class="image" style="background-image: url(@swimmer.Image);"> </div>
+
+            <div class="swimmer-info"> 
+
+                @if (swimmer.Passed)
+                {
+                    <span class="age">
+                        Deceased
+                    </span>
+                }
+                else
+                {
+                    <span class="age">
+                        @swimmer.Age years old
+                    </span>
+                }
+                
+                <h2>
+                    @swimmer.Name
+                </h2>
+                <p>
+                    Team @swimmer.Country 
+                    <br />
+                    Best swim(s) : @swimmer.Best
+
+
+
+                </p>
+            </div>
+
+            <div class="swimmer-footer">
+                <div class="medal">
+
+                    <div class="amount">
+                        @swimmer.Gold
+                    </div>
+
+                    <div class="material">
+                        Gold
+                    </div>
+
+                </div>
+
+                <div class="medal">
+
+                    <div class="amount">
+                        @swimmer.Silver
+                    </div>
+
+                    <div class="material">
+                        Silver
+                    </div>
+
+                </div>
+
+                <div class="medal">
+
+                    <div class="amount">
+                        @swimmer.Bronze
+                    </div>
+
+                    <div class="material">
+                        Bronze
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="read-more">
+            
+                <a asp-area=""
+                    asp-controller="Biology"
+                    asp-action="Biography"
+                    asp-route-id="@swimmer.ID">
+                Read more
+                </a>
+
+            </div>
+        </div>
+    
+    }
+</div>
+
+
+
+
+<h1 class="title">Other Famous Swimmers</h1>
+
+<div class="bio-container">
+
+    @foreach (Swimmer swimmer in Model[1])
     {
 
 

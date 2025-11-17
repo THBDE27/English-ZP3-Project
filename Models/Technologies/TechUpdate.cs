@@ -29,6 +29,14 @@ namespace English_ZP3_Project.Models.Technologies
 
                 int index = name.IndexOf(stopChar);
                 string result = index >= 0 ? name.Substring(index + 1) : name;
+                for (int i = 1; i<result.Length; i++)
+                {
+                    if (char.IsUpper(result[i]))
+                    {
+                        result = result.Insert(i, " ");
+                        i += 2;
+                    }
+                }
 
                 return result;
             }
