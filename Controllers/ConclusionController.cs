@@ -35,6 +35,12 @@ namespace English_ZP3_Project.Controllers
             return View(Word.GetGlossary());
         }
 
+        public IActionResult Conclusion()
+        {
+
+            return View();
+        }
+
 
   
 
