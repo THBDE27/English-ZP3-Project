@@ -91,17 +91,17 @@ new Word("recovery phase", " Part of the stroke where the swimmer brings its arm
 new Word("Swedish goggle", "A classic, minimalist, and low-profile swimming goggle, originally designed in the 1970s. They have no gaskets nor seals, using pressure and suction for a watertight seal and have a custom assembly for a perfect fit on a swimmer’s face.", "noun"),
 new Word("resistance training", "Type of training where swimmers intentionally use factors to create more drag in order to increase strength, endurance and power.", "noun"),
 new Word("major muscles group", " Major muscles group: The five major muscles group are: chest, back, arms abdominals, legs and shoulders. These muscles are essential for exercise and movement. ", "noun"),
-new Word("low impact exercise", "Activity that puts less stress or pressure on the articulations while still building strength and improving cardiovascular health. The most known are swimming, walking and cycling. ", "noun"),
+new Word("low impact exercise ", "Activity that puts less stress or pressure on the articulations while still building strength and improving cardiovascular health. The most known are swimming, walking and cycling. ", "noun"),
 new Word("arthritis", "Disease that often affects people over the age of 50 and that cause the swelling, stiffness or pain of one or more joint.  The joints commonly affected are the knees, hips, feet, ankles, hands, wrists, lower back and shoulders. There’s a lot of types of arthritis, but the most common one is osteoporosis which breaks down the cartilage that protects the joint at the end of the bone over time. ", "noun "),
-new Word("stroke", "Methods of moving the body through the water by repeating a specific movement that typically involves the arms and the legs. Competitive swimming has four strokes: freestyle, backstroke, breaststroke and butterfly. ", "noun ", "strokes"),
-new Word("wingspan", " The length from one hand to the other when both arms are raised at shoulder height. ", "noun"),
-new Word("hyperextended", " When a joint moves past its normal range of motion. ", "adjective"),
-new Word("touchpad", "electronic pad placed at the end of the pool that records the split times and finish time of the swimmer and are activated by the swimmer touching them. ", "noun", "touchpads"),
-new Word("limited mobility", "difficulty in moving freely or without pain due to a physical disability. Can be caused by aging, chronic illnesses or injuries.", "noun"),
-new Word("starts", "Beginning of a race where the swimmers dive off the blocks at the signal which is a loud noise and a flash.", "noun"),
-new Word("turn", "Change of direction when the swimmer reaches the wall at the end of the pool, but still has more lengths to do. ", "noun"),
-new Word("block", "Raised platform at one end of the pool used for the swimmer to dive off when starting the race. Usually covered in an anti slippering coating with a wedge for the swimmer to rest on of its feet on. Blocks often have a handle just above water level for backstroke starts, where the swimmers start the race already in water. ", "noun", "blocks"),
-new Word("sprint velocity", "Speed of the swimmer over a really short distance. Influenced by technique and power. Often expressed as meters per second. ", "noun ")
+new Word("stroke ", "Methods of moving the body through the water by repeating a specific movement that typically involves the arms and the legs. Competitive swimming has four strokes: freestyle, backstroke, breaststroke and butterfly. ", "noun "),
+new Word("wingspan ", " The length from one hand to the other when both arms are raised at shoulder height. ", "noun"),
+new Word("hyperextended ", " When a joint moves past its normal range of motion. ", "adjective"),
+new Word("touchpad ", "electronic pad placed at the end of the pool that records the split times and finish time of the swimmer and are activated by the swimmer touching them. ", "noun"),
+new Word("limited mobility ", "difficulty in moving freely or without pain due to a physical disability. Can be caused by aging, chronic illnesses or injuries.", "noun"),
+new Word("starts ", "Beginning of a race where the swimmers dive off the blocks at the signal which is a loud noise and a flash.", "noun"),
+new Word("turn ", "Change of direction when the swimmer reaches the wall at the end of the pool, but still has more lengths to do. ", "noun"),
+new Word("block ", "Raised platform at one end of the pool used for the swimmer to dive off when starting the race. Usually covered in an anti slippering coating with a wedge for the swimmer to rest on of its feet on. Blocks often have a handle just above water level for backstroke starts, where the swimmers start the race already in water. ", "noun"),
+new Word("sprint velocity ", "Speed of the swimmer over a really short distance. Influenced by technique and power. Often expressed as meters per second. ", "noun ")
 
             };
 

@@ -12,6 +12,23 @@ namespace English_ZP3_Project.Controllers
             _env = env;
         }
 
+
+        public IActionResult Reports()
+        {
+            string folderPath = Path.Combine(_env.WebRootPath, "files", "reports");
+
+            string[] pdfPaths = Directory.GetFiles(folderPath, "*.pdf");
+
+
+            List<ReportFile> files = new();
+            foreach (string pdfPath in pdfPaths)
+            {
+                files.Add(new(pdfPath));
+            }
+
+            return View(files);
+        }
+
         public IActionResult Glossary()
         {
 
@@ -23,6 +40,10 @@ namespace English_ZP3_Project.Controllers
 
             return View();
         }
+
+
+  
+
 
 
 } 
