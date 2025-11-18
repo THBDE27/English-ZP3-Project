@@ -1,65 +1,47 @@
-﻿// glossary.js
-document.addEventListener("DOMContentLoaded", () => {
-    if (!window.glossary || !window.glossary.length) return;
+﻿document.addEventListener("DOMContentLoaded", () => {
+    if (!window.glossary) return;
 
-    function escapeRegex(str) {
-        return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    }
+    const elements = document.querySelectorAll(".glossary-text, #texte");
+    if (!elements.length) return;
 
-    function linkTextNode(node) {
-        let text = node.nodeValue;
-        let original = text;
+    elements.forEach(el => {
+        let html = el.innerHTML;
 
         window.glossary.forEach(word => {
-            if (!word.Text) return;
+            if (!word.text) return;
 
-            // Include plural if available
-            const forms = [word.Text];
-            if (word.Plural) forms.push(word.Plural);
+            const forms = [word.text];
+            if (word.plural) forms.push(word.plural);
 
             forms.forEach(form => {
-                const safe = escapeRegex(form);
+                const escaped = form.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+                // Match word at word boundaries OR start of string
+                const regex = new RegExp(`(^|\\s)${escaped}(?=\\s|$)`, "gi");
 
-                // Match the word + optional punctuation
-                const pattern = new RegExp(`\\b${safe}\\b([.,!?]?)`, "gi");
-
-                text = text.replace(pattern, (match, punct) => {
-                    // Preserve punctuation outside link
-                    return `<a href="${word.Link}" class="glossary-link" title="${word.Definition}">${match.slice(0, match.length - punct.length)}</a>${punct}`;
+                html = html.replace(regex, match => {
+                    if (match.includes('<a ')) return match;
+                    return `<a href="${word.link}" class="glossary-link" title="${word.definition}">${match}</a>`;
                 });
             });
         });
 
-        if (text !== original) {
-            const span = document.createElement("span");
-            span.innerHTML = text;
-            node.replaceWith(span);
-        }
-    }
+        el.innerHTML = html;
+    });
 
-    function walk(node) {
-        if (node.nodeType === Node.TEXT_NODE) {
-            linkTextNode(node);
-        } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName.toLowerCase() !== "a") {
-            [...node.childNodes].forEach(walk);
-        }
-    }
-
-    document.querySelectorAll(".glossary-text, #texte").forEach(el => walk(el));
-
-    // Add styles
     const style = document.createElement("style");
     style.textContent = `
-        .glossary-link {
-            color: lightblue;
-            text-decoration: underline;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .glossary-link:hover {
-            color: lightblue;
-        }
-    `;
-    document.head.appendChild(style);
-});
+    .glossary-link {
+        color:lightblue;
+          text-decoration: underline;
+        cursor: pointer;
+        font-weight: bold;
+    }
 
+    .glossary-link:hover {
+        color: lightblue; /* color when hovering */
+    }
+`;
+    document.head.appendChild(style);
+
+
+});
