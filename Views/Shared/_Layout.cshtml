@@ -1,6 +1,36 @@
 ﻿@using English_ZP3_Project.Helpers
 @using English_ZP3_Project.Models
 
+@using System.Text.Encodings.Web
+@using System.Text.Json
+
+@{
+    // Configure JSON serialization to safely escape quotes and newlines
+    var options = new JsonSerializerOptions
+    {
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+        WriteIndented = false
+    };
+
+    // Serialize the glossary to safe JSON
+    var glossaryJson = JsonSerializer.Serialize(
+        Word.GetGlossary().Select(w => new {
+            text = w.Text,
+            link = w.Link,
+            definition = w.Definition
+        }).ToList(),
+        options
+    );
+
+    // Serialize the related words to safe JSON
+    var relatedJson = JsonSerializer.Serialize(
+        RelatedWord.GetRelatedWords().Select(r => new {
+            variant = r.Text,
+            orig = r.Original
+        }).ToList(),
+        options
+    );
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -104,6 +134,10 @@
  <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+    window.glossary = @Html.Raw(glossaryJson);
+    window.related = @Html.Raw(relatedJson);
+</script>
 
 
 <script>
@@ -111,13 +145,26 @@
         System.Text.Json.JsonSerializer.Serialize(
             Word.GetGlossary().Select(w => new {
                 text = w.Text,
-                plural = w.Plural,
                 link = w.Link,
                 definition = w.Definition
+            }).ToList(),
+            options
+        )
+    );
+</script>
+
+
+<script>
+    window.related = @Html.Raw(
+        System.Text.Json.JsonSerializer.Serialize(
+            RelatedWord.GetRelatedWords().Select(r => new {
+                variant = r.Text,
+                orig = r.Original
             })
         )
-    )
+    );
 </script>
+
 
 <!-- mark.js library -->
 <script src="https://cdn.jsdelivr.net/npm/mark.js/dist/mark.min.js"></script>
