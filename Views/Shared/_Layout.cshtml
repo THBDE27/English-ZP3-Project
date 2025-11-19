@@ -1,8 +1,9 @@
 ﻿@using English_ZP3_Project.Helpers
 @using English_ZP3_Project.Models
-
 @using System.Text.Encodings.Web
 @using System.Text.Json
+@using System.IO
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Env
 
 @{
     // Configure JSON serialization to safely escape quotes and newlines
@@ -137,32 +138,6 @@
 <script>
     window.glossary = @Html.Raw(glossaryJson);
     window.related = @Html.Raw(relatedJson);
-</script>
-
-
-<script>
-    window.glossary = @Html.Raw(
-        System.Text.Json.JsonSerializer.Serialize(
-            Word.GetGlossary().Select(w => new {
-                text = w.Text,
-                link = w.Link,
-                definition = w.Definition
-            }).ToList(),
-            options
-        )
-    );
-</script>
-
-
-<script>
-    window.related = @Html.Raw(
-        System.Text.Json.JsonSerializer.Serialize(
-            RelatedWord.GetRelatedWords().Select(r => new {
-                variant = r.Text,
-                orig = r.Original
-            })
-        )
-    );
 </script>
 
 
