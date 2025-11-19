@@ -1,6 +1,16 @@
-﻿
+﻿@using System.Net
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Env
+
 @{
     ViewData["Title"] = "PhysicalExam";
+
+    var musclesFolder = System.IO.Path.Combine(Env.WebRootPath ?? Env.ContentRootPath, "files", "muscles");
+    string[] txtFiles = Array.Empty<string>();
+    if (System.IO.Directory.Exists(musclesFolder))
+    {
+        txtFiles = System.IO.Directory.GetFiles(musclesFolder, "*.txt", System.IO.SearchOption.TopDirectoryOnly);
+        Array.Sort(txtFiles, StringComparer.OrdinalIgnoreCase);
+    }
 }
 
 <h1>PhysicalExam (temporary layout)</h1>
@@ -8,60 +18,38 @@
 this will be the game
 
 <div>
-    <pre class="glossary-text">
-        <b>The Arm Movement</b>
 
-        The arm stroke in freestyle can be split into four phases:
+    Technology and techniques play a huge role in swimming has a whole, they help to achieve faster time or help swimmers to get less exhausted while swimming for long periods of time. Yes, these techniques and technology are truly a blessing for the swimmer who has them, but what about the muscles behind those miracles? Muscles, like in most sports and physical activities, play a huge part in swimming and it’s not because swimming makes the body not as heavy compared to running that it doesn’t put a lot of pressure on them, swimming put even more pressure on the muscles than running actually because it’s a full-body workout which uses all the muscles in the humans body. We’ve got four main arms movements such as hand entry, catch, pull and recovery which are universally used in the four techniques of swimming and four legs movements which are upbeat, downbeat, outsweep and propulsive phase the two latter being mostly used in breaststroke.
+    <br/>
+    <br/>
+    <br/>
 
-        1.	Hand Entry
-        2.	Catch
-        3.	Pull 
-        4.	Recovery
+    @if (txtFiles.Length == 0)
+    {
+        <p>No muscle example files found.</p>
+    }
+    else
+    {
+        foreach (var file in txtFiles)
+        {
+            var title = System.IO.Path.GetFileNameWithoutExtension(file).Replace('_', ' ').Replace('-', ' ');
+            string raw;
+            try
+            {
+                raw = System.IO.File.ReadAllText(file);
+            }
+            catch
+            {
+                raw = string.Empty;
+            }
 
-        Each phase involves a different set of muscles:
-
-        <b>·	Hand entry</b>
-        The multiples muscles in the wrist help stabilize the hands and keep them in the best position.
-
-        <b>•	Catch</b>
-         As the hand enters the water and prepares to pull, swimmers activate their pectorals (chest muscles) and the latissimus dorsi and trapezius which are large 
-         upper and middle back muscles.
-
-        <b>•	Pull</b>
-         This is where most of the forward motion is generated. Swimmers use their shoulder adductors, extensors and internal rotators to provide the stroke power 
-         and their latissimus dorsi and serratus anterior for propulsion. They also use their biceps and triceps for elbow flexion and extension. They use their 
-         shoulder muscles (rotator cuff and deltoids), their middle back muscles (trapezius) and their rib cage muscle (serratus anterior) to stabilize and rotate 
-         the shoulder.
-
-        <b>•	Recovery</b>
-        When the arm exits the water and swings forward, deltoids, trapezius, and rotator cuff muscles play a key role in maintaining shoulder stability and a fluid 
-        motion.
- 
-
-
-        <b>The legs</b>
-
-        The kick in freestyle is known as the flutter kick, an alternating motion with straight or slightly bent legs. Though not the main source of propulsion, a 
-        well-timed and consistent kick improves balance, reduces drag and maintains horizontal body position. The kick can be split in two movements: the downbeat 
-        and the upbeat.
-
-        <b>·	Downbeat (kick downward):</b>
-        The quadriceps are used to extend the knee, and the hip flexors bring the thigh forward and down.
-
-        <b>·	Upbeat (kick upward):</b>
-        The hamstrings flex the knee and the gluteus maximus (glutes) helps lift the leg to the surface. The gastrocnemius and the soleus (calf muscles) are also 
-        used to maintain the ankles extended and the toes pointed.
- 
-
-
-        <b>Body position</b>
-
-        To maintain an effective position in the water, and an effective rotation, you also need to use your abdominal muscles and your obliques. The core should be 
-        engaged during the whole stroke, but it is especially important to keep it engaged during the pull and the kick phases. You also need your lower back muscles 
-        and your hip flexors and glutes to create tension in your back which maintain your spine straight and keeps your legs close to the surface which keeps them 
-        from sinking and creating drag.
-        A strong core also ensures that the rotation of the body comes primarily from the shoulders, not from bending the spine.
-
-    </pre>
+            // HTML-encode file contents to avoid injecting HTML, then render inside <pre> to preserve whitespace
+            var encoded = System.Net.WebUtility.HtmlEncode(raw);
+            <section class="muscle-text" style="margin-bottom:24px;">
+                <h3 style="margin-bottom:6px;">@title</h3>
+                <pre class="glossary-text" style="white-space:pre-wrap;">@Html.Raw(encoded)</pre>
+            </section>
+        }
+    }
 </div>
 

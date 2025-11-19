@@ -8,11 +8,11 @@
 .subtitle {
     display: 4;
     text-align: center;
-    font: cookie;
+    /* removed Cookie font and use Lucida Grande with fallbacks */
     margin-top: -75px;
     margin-bottom: 10px;
-    font-family: 'Cookie', cursive;
-    font-size: 3rem;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Arial, sans-serif;
+    font-size: 1rem;
 }
 
 .center {
@@ -49,9 +49,6 @@
 .slider::-webkit-scrollbar-track {
     background: rgba(37, 35, 225, 0.2);
 }
-
-
-
 
 .event-date {
     font-size: 18px;
@@ -92,22 +89,19 @@
     max-height: 100%;
 }
 
+/* Vertical scrollbar matches horizontal slider */
+.information::-webkit-scrollbar {
+    width: 5px; /* same as horizontal height */
+}
 
+.information::-webkit-scrollbar-thumb {
+    background: midnightblue; /* same as horizontal thumb */
+    border-radius: 10px;
+}
 
-
-    /* Vertical scrollbar matches horizontal slider */
-    .information::-webkit-scrollbar {
-        width: 5px; /* same as horizontal height */
-    }
-
-    .information::-webkit-scrollbar-thumb {
-        background: midnightblue; /* same as horizontal thumb */
-        border-radius: 10px;
-    }
-
-    .information::-webkit-scrollbar-track {
-        background: rgba(37, 35, 225, 0.2); /* same as horizontal track */
-    }
+.information::-webkit-scrollbar-track {
+    background: rgba(37, 35, 225, 0.2); /* same as horizontal track */
+}
 
 .cards {
     width: fit-content;
