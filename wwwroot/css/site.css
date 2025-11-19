@@ -11,7 +11,8 @@ html {
 
 
 .font-cookie {
-    font-family: 'Cookie', cursive;
+    /* switched from Cookie to Lucida Grande with reasonable fallbacks */
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Arial, sans-serif;
     font-size: 3rem;
 }
 
@@ -48,11 +49,11 @@ html {
 .title {
     display: 4;
     text-align: center;
-    font: cookie;
+    /* removed invalid font: cookie; replaced with Lucida Grande */
     margin-top: 40px;
     margin-bottom:40px;
-    font-family: 'Cookie', cursive;
-    font-size: 3rem;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Arial, sans-serif;
+    font-size: 2rem;
 }
 
 html {

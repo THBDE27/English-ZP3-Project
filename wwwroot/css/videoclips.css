@@ -1,5 +1,4 @@
-﻿
-h1 {
+﻿h1 {
     margin-bottom: 30px;
 }
 
@@ -43,9 +42,10 @@ h1 {
     }
 
 .video-title {
-    font-family: 'Cookie', cursive;
+    /* replaced Cookie with Lucida Grande */
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Arial, sans-serif;
     margin-top: 12px;
-    font-size: 30px;
+    font-size: 20px;
     color: black;
     padding: 0 10px;
     text-align: center;
