@@ -28,7 +28,6 @@ public class GoToTarget : Node
 
         BT.activeNode = this;
 
-        agent.speed = 50f;
         agent.acceleration = 100f;
         agent.angularSpeed = 1000f;
         agent.autoBraking = false;

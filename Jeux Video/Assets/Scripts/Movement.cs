@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     {
         characControl = GetComponent<CharacterController>();
         rotationOriginal = perso.transform.rotation;
+        swimSpeed = PlayerPrefs.GetFloat("JoueurSpeed", 15);
     }
 
     void Update()

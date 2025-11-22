@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - murGoBack
+  - NPC
   layers:
   - Default
   - TransparentFX

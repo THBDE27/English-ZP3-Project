@@ -5,7 +5,7 @@ public class GoBack : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI text;
 
-    bool reachedEndOfPool = false;
+    public bool reachedEndOfPool = false;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("murGoBack"))
@@ -13,14 +13,6 @@ public class GoBack : MonoBehaviour
             print("murfond");
             text.gameObject.SetActive(true);
             reachedEndOfPool = true;
-        }
-
-        if (reachedEndOfPool)
-        {
-            if (other.CompareTag("Finish"))
-            {
-
-            }
         }
     }
 

@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\ClickTorso.cs" />
     <Compile Include="Assets\Scripts\GoToTarget.cs" />
     <Compile Include="Assets\Scripts\SwimRace.cs" />
+    <Compile Include="Assets\Scripts\Shop.cs" />
     <Compile Include="Assets\Scripts\ClickLegs.cs" />
     <Compile Include="Assets\Scripts\BehaviorTree.cs" />
     <Compile Include="Assets\Scripts\Interrupt.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Assets\Scripts\ClickArm.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\FinishPlace.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
