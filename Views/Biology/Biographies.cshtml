@@ -15,8 +15,15 @@
 
         <div class="swimmer">
 
+            <div class="image"
+                 style="background-image: url('@swimmer.Image');
+                    background-size: 100% auto;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    width: 100%;
+                    height: 180px;">
+            </div>
 
-            <div class="image" style="background-image: url(@swimmer.Image);"> </div>
 
             <div class="swimmer-info"> 
 
@@ -88,7 +95,7 @@
             
                 <a asp-area=""
                     asp-controller="Biology"
-                    asp-action="Biography"
+                    asp-action="FamousAnatomies"
                     asp-route-id="@swimmer.ID">
                 Read more
                 </a>
@@ -113,7 +120,14 @@
         <div class="swimmer">
 
 
-            <div class="image" style="background-image: url(@swimmer.Image);"> </div>
+            <div class="image"
+                 style="background-image: url('@swimmer.Image');
+                background-size: 100% auto;
+                background-repeat: no-repeat;
+                background-position: center;
+                width: 100%;
+                height: 180px;">
+            </div>
 
             <div class="swimmer-info"> 
 
@@ -185,7 +199,7 @@
             
                 <a asp-area=""
                     asp-controller="Biology"
-                    asp-action="Biography"
+                    asp-action="FamousAnatomies"
                     asp-route-id="@swimmer.ID">
                 Read more
                 </a>
