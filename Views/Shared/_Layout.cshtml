@@ -72,7 +72,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" id="dropdownTechnology" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">Technology</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownTechnology"    style=" font-size:20px;border: 2px solid #9388CF; border-radius: 10px;">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownTechnology">
                                 @{
                                     List<string> folders = FolderHelper.GetSubFolderNames("files/technologies");
                                     foreach (string folder in folders)
@@ -97,7 +97,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" id="dropdownBiology" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">Biology</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownBiology" style="font-size:20px; border: 2px solid #9388CF; border-radius: 10px;">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownBiology" style="font-size:20px">
                                 <li><a class="dropdown-item" asp-area="" asp-controller="Biology" asp-action="Biographies" style="font-size:20px">Famous Anatomies</a></li>
                                 <li><a class="dropdown-item" asp-area="" asp-controller="HealthBenefits" asp-action="Benefits" style="font-size:20px">Health Benefits</a></li>
                                 <li><a class="dropdown-item" asp-area="" asp-controller="Biology" asp-action="PhysicalExam" style="font-size:20px">Muscles trained</a></li>
@@ -108,7 +108,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" id="dropdownConclusion" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">More</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownConclusion" style="font-size:20px; border: 2px solid #9388CF; border-radius: 10px;">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownConclusion" style="font-size:20px">
                                 <li><a class="dropdown-item" asp-area="" asp-controller="Conclusion" asp-action="Conclusion" style="font-size:20px">Conclusion</a></li>
                                 <li><a class="dropdown-item" asp-area="" asp-controller="Conclusion" asp-action="Glossary" style="font-size:20px">Glossary</a></li>
                                 <li><a class="dropdown-item" asp-area="" asp-controller="Conclusion" asp-action="Ressources" style="font-size:20px">Sources</a></li>

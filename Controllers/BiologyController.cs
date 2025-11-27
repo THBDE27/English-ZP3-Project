@@ -37,7 +37,7 @@ new Swimmer("Kaylee", "McKeown", 12, 7, 2001, "Australia", "backstroke", 5, 1, 3
             return View(swimmers);
         }
 
-        public IActionResult FamousAnatomies(string id)
+        public IActionResult Biography(string id)
         {
             Swimmer s;
             for (int i = 0; i < 2; i++)

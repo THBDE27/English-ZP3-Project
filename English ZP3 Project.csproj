@@ -20,6 +20,7 @@
     <Folder Include="wwwroot\files\muscles\Breaststroke\" />
     <Folder Include="wwwroot\files\muscles\Butterfly\" />
     <Folder Include="wwwroot\files\muscles\Freestyle\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <ItemGroup>

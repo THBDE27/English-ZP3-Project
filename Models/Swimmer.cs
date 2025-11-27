@@ -1,13 +1,23 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.CodeDom;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace English_ZP3_Project.Models
 {
-
+   
     public class Swimmer
     {
 
-        public Swimmer(string first, string last,
-                       int birthDay, int month, int year,
+        const int FACTS = 0;
+        const int ACHIEVEMENTS = 1;
+        const int SPECIALIZATION = 2;
+        const int BIOLOGY = 3;
+
+        public Swimmer(string first, string last, 
+                       int birthDay, int month, int year, 
                        string country, string bestSwim,
                        int gold, int silver, int bronze,
                        bool died)
@@ -27,8 +37,8 @@ namespace English_ZP3_Project.Models
             Passed = died;
         }
 
-        public Swimmer(string first, string middle, string last,
-                       int birthDay, int month, int year,
+        public Swimmer(string first, string middle, string last, 
+                       int birthDay, int month, int year, 
                        string country, string bestSwim,
                        int gold, int silver, int bronze,
                        bool died)
@@ -47,8 +57,12 @@ namespace English_ZP3_Project.Models
             Age = SetAge(birthDay, month, year);
             Passed = died;
         }
+        
+        
+        
 
         #region Name
+
 
         public string FirstName { get; }
         public string MiddleName { get; }
@@ -103,7 +117,7 @@ namespace English_ZP3_Project.Models
 
             date += month + ".";
             date += year.ToString()[2];
-            date += year.ToString()[3];
+            date+= year.ToString()[3];
 
             return date;
         }
@@ -127,7 +141,7 @@ namespace English_ZP3_Project.Models
 
         public string Country
         {
-            get; set;
+            get;set;
         }
 
         public string Best { get; set; }
@@ -139,6 +153,9 @@ namespace English_ZP3_Project.Models
         #endregion Medals
 
         #region Text
+
+
+
 
         public string FilePath
         {
@@ -173,69 +190,68 @@ namespace English_ZP3_Project.Models
 
         private static readonly Regex _leadingTitleRx = new Regex(@"^\s*[\(\uFF08]([^)\uFF09]+)[\)\uFF09]\s*", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
-        private void EnsureParsed()
+private void EnsureParsed()
+{
+    var path = FilePath ?? "";
+    if (string.Equals(path, _infoCachedPath, StringComparison.OrdinalIgnoreCase) && _informationCache != null && _subtitlesCache != null)
+        return;
+
+    _infoCachedPath = path;
+    var paras = new List<string>();
+    var subs = new List<string>();
+
+    if (!System.IO.File.Exists(path))
+    {
+        _informationCache = Array.Empty<string>();
+        _subtitlesCache = Array.Empty<string>();
+        return;
+    }
+
+    string text;
+    try { text = System.IO.File.ReadAllText(path); }
+    catch { text = string.Empty; }
+
+    var split = text
+        .Split(new string[] { "\r\n\r\n", "\n\n" }, StringSplitOptions.RemoveEmptyEntries)
+        .Select(p => p.Trim())
+        .ToArray();
+
+    foreach (var p in split)
+    {
+        if (string.IsNullOrWhiteSpace(p))
         {
-            var path = FilePath ?? "";
-            if (string.Equals(path, _infoCachedPath, StringComparison.OrdinalIgnoreCase) && _informationCache != null && _subtitlesCache != null)
-                return;
-
-            _infoCachedPath = path;
-            var paras = new List<string>();
-            var subs = new List<string>();
-
-            if (!System.IO.File.Exists(path))
-            {
-                _informationCache = Array.Empty<string>();
-                _subtitlesCache = Array.Empty<string>();
-                return;
-            }
-
-            string text;
-            try { text = System.IO.File.ReadAllText(path); }
-            catch { text = string.Empty; }
-
-            var split = text
-                .Split(new string[] { "\r\n\r\n", "\n\n" }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(p => p.Trim())
-                .ToArray();
-
-            foreach (var p in split)
-            {
-                if (string.IsNullOrWhiteSpace(p))
-                {
-                    paras.Add(string.Empty);
-                    subs.Add(string.Empty);
-                    continue;
-                }
-
-                var s = p;
-                string title = string.Empty;
-
-                // New: use regex to capture leading "(Title)" (supports ASCII and fullwidth parentheses), and allows leading whitespace
-                var m = _leadingTitleRx.Match(s);
-                if (m.Success)
-                {
-                    title = m.Groups[1].Value.Trim();
-                    s = s.Substring(m.Length).TrimStart();
-                }
-
-                subs.Add(title);
-                paras.Add(s);
-            }
-
-            _informationCache = paras.ToArray();
-            _subtitlesCache = subs.ToArray();
+            paras.Add(string.Empty);
+            subs.Add(string.Empty);
+            continue;
         }
 
-        // Return a web-usable URL (for client-side usage)
+        var s = p;
+        string title = string.Empty;
+
+        // New: use regex to capture leading "(Title)" (supports ASCII and fullwidth parentheses), and allows leading whitespace
+        var m = _leadingTitleRx.Match(s);
+        if (m.Success)
+        {
+            title = m.Groups[1].Value.Trim();
+            s = s.Substring(m.Length).TrimStart();
+        }
+
+        subs.Add(title);
+        paras.Add(s);
+    }
+
+    _informationCache = paras.ToArray();
+    _subtitlesCache = subs.ToArray();
+}
+
         public string Image
         {
-            get => GetWebPath("images", "png");
+            get => GetPath("images", "png");
         }
 
         public string ID { get => Initials + Birthday + ""; }
 
-        #endregion Text
+#endregion Text
 
         // METHODS
         string GetPath(string folder, string type)
@@ -249,11 +265,7 @@ namespace English_ZP3_Project.Models
                                           type);
         }
 
-        string GetWebPath(string folder, string type)
-        {
-            // web-relative path served from wwwroot
-            return "/" + folder + "/biographies/" + ID + "." + type;
-        }
+
 
     }
 }
