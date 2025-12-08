@@ -6,29 +6,19 @@
 @inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Env
 
 @{
-    // Configure JSON serialization to safely escape quotes and newlines
     var options = new JsonSerializerOptions
     {
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
         WriteIndented = false
     };
 
-    // Serialize the glossary to safe JSON
     var glossaryJson = JsonSerializer.Serialize(
-        Word.GetGlossary().Select(w => new {
-            text = w.Text,
-            link = w.Link,
-            definition = w.Definition
-        }).ToList(),
+        Word.GetGlossary().Select(w => new { text = w.Text, link = w.Link, definition = w.Definition }).ToList(),
         options
     );
 
-    // Serialize the related words to safe JSON
     var relatedJson = JsonSerializer.Serialize(
-        RelatedWord.GetRelatedWords().Select(r => new {
-            variant = r.Text,
-            orig = r.Original
-        }).ToList(),
+        RelatedWord.GetRelatedWords().Select(r => new { variant = r.Text, orig = r.Original }).ToList(),
         options
     );
 }
@@ -43,45 +33,39 @@
     <title>@ViewData["Title"] - English_ZP3_Project</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/English_ZP3_Project.styles.css" asp-append-version="true" />
-    <!-- Cookie webfont removed; using system font "Lucida Grande" -->
 </head>
 <body>
     <header>
         <!-- Banner image -->
-        <img src="~/images/pngtree-young-woman-swimmer-in-swimming-pool-photo-image_2817484.jpg"
+        <img src="~/images/navbarPic.png"
              alt="Banner" class="top-banner">
 
         <!-- Navbar -->
-        <nav class="font-cookie navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3"
-             style="min-height: 100px;">
+        <nav class="font-cookie navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand font-cookie text-white" asp-area="" asp-controller="Home" asp-action="Index"
-                   style="text-decoration: none; line-height: 1; display: inline-block; text-align: center;">
-                    <span style="display: block; font-size: 25px; margin-bottom: -5px;">The study of</span>
-                    <span style="display: block; font-size: 50px;">Swimming</span>
+                <a class="navbar-brand text-white text-center" asp-area="" asp-controller="Home" asp-action="Index">
+                    <span class="navbar-subtitle">The study of</span>
+                    <span class="navbar-title">Swimming</span>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between" style="font-size:30px" id="navbarContent">
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between" id="navbarContent">
                     <ul class="navbar-nav flex-grow-1">
                         <!-- Technology dropdown -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" id="dropdownTechnology" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">Technology</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownTechnology"    style=" font-size:20px;border: 2px solid #9388CF; border-radius: 10px;">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownTechnology">
                                 @{
                                     List<string> folders = FolderHelper.GetSubFolderNames("files/technologies");
                                     foreach (string folder in folders)
                                     {
                                         <li>
                                             <a class="dropdown-item" asp-area="" asp-controller="Technology"
-                                               asp-action="Technology" asp-route-id="@folder" style="font-size:20px">
-                                                @folder
-                                            </a>
+                                               asp-action="Technology" asp-route-id="@folder">@folder</a>
                                         </li>
                                     }
                                 }
@@ -97,21 +81,21 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" id="dropdownBiology" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">Biology</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownBiology" style="font-size:20px; border: 2px solid #9388CF; border-radius: 10px;">
-                                <li><a class="dropdown-item" asp-area="" asp-controller="Biology" asp-action="Biographies" style="font-size:20px">Famous Anatomies</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-controller="HealthBenefits" asp-action="Benefits" style="font-size:20px">Health Benefits</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-controller="Biology" asp-action="PhysicalExam" style="font-size:20px">Muscles trained</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownBiology">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Biology" asp-action="Biographies">Famous Anatomies</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="HealthBenefits" asp-action="Benefits">Health Benefits</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Biology" asp-action="PhysicalExam">Muscles trained</a></li>
                             </ul>
                         </li>
 
-                        <!-- Conclusion dropdown -->
+                        <!-- More dropdown -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" id="dropdownConclusion" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">More</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownConclusion" style="font-size:20px; border: 2px solid #9388CF; border-radius: 10px;">
-                                <li><a class="dropdown-item" asp-area="" asp-controller="Conclusion" asp-action="Conclusion" style="font-size:20px">Conclusion</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-controller="Conclusion" asp-action="Glossary" style="font-size:20px">Glossary</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-controller="Conclusion" asp-action="Ressources" style="font-size:20px">Sources</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownConclusion">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Conclusion" asp-action="Conclusion">Conclusion</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Conclusion" asp-action="Glossary">Glossary</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Conclusion" asp-action="Sources">Sources</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -128,28 +112,25 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            <br /> by Elie Thibodeau, Gabrielle Thibodeau, Naomie Kam-Thong & Victor Côté-Nicholson; F25 - English_ZP3_Project
+            <br /> by Elie Thibodeau - Sciences, Informatique et Mathématiques;
+            <br />    Gabrielle Thibodeau - Sciences de la nature;
+            <br />    Naomie Kam-Thong - Sciences, Informatique et Mathématiques;
+            <br />    Victor Côté-Nicholson - Technique de l'informatique
+            <br />
+            <br />Fall 2025 - English ZP3 Project : "The Study of Swimming"
         </div>
     </footer>
 
- <script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-    window.glossary = @Html.Raw(glossaryJson);
-    window.related = @Html.Raw(relatedJson);
-</script>
+    <script>
+        window.glossary = @Html.Raw(glossaryJson);
+        window.related = @Html.Raw(relatedJson);
+    </script>
 
-
-<!-- mark.js library -->
-<script src="https://cdn.jsdelivr.net/npm/mark.js/dist/mark.min.js"></script>
-
-<!-- custom glossary JS -->
-<script src="~/js/glossary.js"></script>
-
-
-@await RenderSectionAsync("Scripts", required: false)
-
-
+    <script src="https://cdn.jsdelivr.net/npm/mark.js/dist/mark.min.js"></script>
+    <script src="~/js/glossary.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

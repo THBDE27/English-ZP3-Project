@@ -1,64 +1,74 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 775px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-
+body {
+    margin-bottom: 60px;
+    background-color: white;
+}
 
 .font-cookie {
-    /* switched from Cookie to Lucida Grande with reasonable fallbacks */
     font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Arial, sans-serif;
-    font-size: 3rem;
+    font-size: 1.5rem; /* reduced from 3rem */
 }
 
+.navbar-brand {
+    text-decoration: none;
+    line-height: 1;
+}
+
+.navbar-subtitle {
+    display: block;
+    font-size: 1.5rem; /* ~24px desktop */
+    margin-bottom: -0.2rem;
+}
+
+.navbar-title {
+    display: block;
+    font-size: 2.5rem; /* ~40px desktop */
+}
 
 .navbar .dropdown-toggle::after {
     display: none;
 }
 
 .navbar .dropdown-menu {
-    background-color:#452FBA; 
-    color:white;
-    border: none; 
+    background-color: #452FBA;
+    color: white;
+    border: 2px solid #9388CF;
+    border-radius: 10px;
 }
 
-.dropdown-item:hover {
+.dropdown-item {
+    font-size: 1rem; /* ~16px */
+    padding: 0.25rem 0.5rem;
+    color: white;
+}
+
+    .dropdown-item:hover {
         background-color: #5B49BB;
         color: white;
     }
 
-.dropdown-item {
-    font-size: 36px; /* adjust as needed */
-    padding: 0.5rem 1rem; /* optional: bigger clickable area */
-    color: white; /* text color */
-}
-
 .top-banner {
-    width: 100%; /* full width */
-    height: 100px; /* desired height */
-    object-fit: cover; /* crop/scale image to fill container */
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
     display: block;
-    color:white;
+    color: white;
 }
 
 .title {
-    display: 4;
     text-align: center;
-    /* removed invalid font: cookie; replaced with Lucida Grande */
-    margin-top: 40px;
-    margin-bottom:40px;
+    margin: 40px 0;
     font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Arial, sans-serif;
-    font-size: 2rem;
-}
-
-html {
-    position: relative;
-    min-height: 100%;
+    font-size: 1.5rem;
 }
 
 header {
@@ -66,19 +76,14 @@ header {
     color: white;
 }
 
-body {
-  margin-bottom: 60px;
-  background-color:white;
-}
-
 .glossary-link {
-    color: #007bff; /* your preferred color, e.g. blue */
+    color: #007bff;
     font-weight: bold;
-    text-decoration: none; /* remove underline if you want */
+    text-decoration: none;
     cursor: pointer;
 }
 
     .glossary-link:hover {
-        color: red; /* darker shade on hover */
+        color: red;
         text-decoration: underline;
     }

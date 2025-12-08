@@ -1,55 +1,39 @@
-﻿@using System.Net
-@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Env
-
+﻿@using static System.Runtime.InteropServices.JavaScript.JSType
 @{
-    ViewData["Title"] = "PhysicalExam";
-
-    var musclesFolder = System.IO.Path.Combine(Env.WebRootPath ?? Env.ContentRootPath, "files", "muscles");
-    string[] txtFiles = Array.Empty<string>();
-    if (System.IO.Directory.Exists(musclesFolder))
-    {
-        txtFiles = System.IO.Directory.GetFiles(musclesFolder, "*.txt", System.IO.SearchOption.TopDirectoryOnly);
-        Array.Sort(txtFiles, StringComparer.OrdinalIgnoreCase);
-    }
+    ViewData["Title"] = "Physical Exam";
 }
+<link rel="stylesheet" href="~/css/videoclips.css" asp-append-version="true" />
 
-<h1>PhysicalExam (temporary layout)</h1>
+<h1 class="title">Physical Examination</h1>
 
-this will be the game
-
-<div>
+<div style="display:flex; justify-content:center; max-width:850px; margin:0 auto; padding:0 20px; text-align:center;">
 
     Technology and techniques play a huge role in swimming has a whole, they help to achieve faster time or help swimmers to get less exhausted while swimming for long periods of time. Yes, these techniques and technology are truly a blessing for the swimmer who has them, but what about the muscles behind those miracles? Muscles, like in most sports and physical activities, play a huge part in swimming and it’s not because swimming makes the body not as heavy compared to running that it doesn’t put a lot of pressure on them, swimming put even more pressure on the muscles than running actually because it’s a full-body workout which uses all the muscles in the humans body. We’ve got four main arms movements such as hand entry, catch, pull and recovery which are universally used in the four techniques of swimming and four legs movements which are upbeat, downbeat, outsweep and propulsive phase the two latter being mostly used in breaststroke.
-    <br/>
-    <br/>
-    <br/>
+</div>
+<br />
+<br />
+<br />
+<span style="display:flex; justify-content:center; text-align:center;">
+    First, check out our tutorial on how to navigate the game section!
+</span>
+<br />
 
-    @if (txtFiles.Length == 0)
-    {
-        <p>No muscle example files found.</p>
-    }
-    else
-    {
-        foreach (var file in txtFiles)
-        {
-            var title = System.IO.Path.GetFileNameWithoutExtension(file).Replace('_', ' ').Replace('-', ' ');
-            string raw;
-            try
-            {
-                raw = System.IO.File.ReadAllText(file);
-            }
-            catch
-            {
-                raw = string.Empty;
-            }
+<div class="video-container" style="display:flex; justify-content:center;">
 
-            // HTML-encode file contents to avoid injecting HTML, then render inside <pre> to preserve whitespace
-            var encoded = System.Net.WebUtility.HtmlEncode(raw);
-            <section class="muscle-text" style="margin-bottom:24px;">
-                <h3 style="margin-bottom:6px;">@title</h3>
-                <pre class="glossary-text" style="white-space:pre-wrap;">@Html.Raw(encoded)</pre>
-            </section>
-        }
-    }
+    <div class="video-item">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/Mo7NTTCV-Vc" allowfullscreen></iframe>
+        </div>
+        <div class="video-title">How to play</div>
+    </div>
+
+
 </div>
 
+<br />
+<br />
+<br />
+<span style="display:flex; justify-content:center; text-align:center;font-size:40px;font-weight:600;">
+    <a href="https://didlydooforyou.itch.io/swimming-race">Click here to download!</a>
+</span>
+<br />
